@@ -3,9 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/mando/Desktop/XOProject/src/view/FXMLLogin.fxml</file>
-            <file>file:/Users/mando/Desktop/XOProject/src/view/FXMLHomeScreen.fxml</file>
-            <file>file:/Users/mando/Desktop/XOProject/src/main/Main.java</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/aboutIcon@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/glass.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/onlineModeImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/singleModeImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/modesBtnBg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/login.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/oneVsoneImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/player1Card@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/view/FXMLOneVSOneMode.fxml</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/controller/FXMLOneVSOneModeController.java</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/leaderboardImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/tableItemBg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/scorePointsImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/findPlayersImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/man@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/player2Card@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/recordsImg@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/backBtn@2x.png</file>
+            <file>file:/G:/ITI_Courses/Java/XO%20Project/XOProject/src/resources/logoutBtn@2x.png</file>
         </group>
     </open-files>
 </project-private>
