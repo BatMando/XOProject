@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLChooseLevelController">
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLChooseLevelController">
     <children>
       <ImageView fitHeight="476.0" fitWidth="846.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -64,7 +64,7 @@
                   <Image url="@../resources/backBtn@2x.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" opacity="0.0" prefHeight="74.0" prefWidth="58.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="backBtn" mnemonicParsing="false" opacity="0.0" prefHeight="74.0" prefWidth="58.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
     </children>
