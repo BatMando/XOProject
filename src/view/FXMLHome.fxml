@@ -48,7 +48,7 @@
                   <Insets />
                </StackPane.margin>
             </VBox>
-            <Button fx:id="singleModeBtn" mnemonicParsing="false" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="singleModeBtn" mnemonicParsing="false" onAction="#navigateToChooseLevelScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
       <StackPane layoutX="251.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
@@ -84,7 +84,7 @@
                   <Insets />
                </StackPane.margin>
             </VBox>
-            <Button mnemonicParsing="false" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="oneVSOneBtn" mnemonicParsing="false" onAction="#navigateToOneVSOneScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
       <StackPane layoutX="442.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
