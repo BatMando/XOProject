@@ -7,22 +7,19 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 
 /**
+ * FXML Controller class
  *
- * @author Thoraya Hamdy
+ * @author mando
  */
-public class FXMLHomeScreenController implements Initializable {
+ 
+public class FXMLOneVSComputerModeController implements Initializable {
 
-    @FXML
-    private Button singleModeBtn;
-    
-   
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

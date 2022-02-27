@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLOneVSComputerModeController">
    <children>
       <ImageView fitHeight="476.0" fitWidth="846.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,12 +47,12 @@
                         <Font name="Phosphate Inline" size="50.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
@@ -62,7 +62,7 @@
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="1">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
@@ -102,15 +102,15 @@
                   <Image url="@../resources/player2Card@2x.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="x">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="O">
                <StackPane.margin>
                   <Insets bottom="10.0" right="60.0" />
                </StackPane.margin>
                <font>
-                  <Font name="System Bold" size="40.0" />
+                  <Font name="Poppins Regular" size="29.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Computer">
                <font>
                   <Font name="Poppins Regular" size="20.0" />
                </font>
@@ -127,14 +127,6 @@
                   <Image url="@../resources/player1Card@2x.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="o">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="60.0" />
-               </StackPane.margin>
-            </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
                <StackPane.margin>
                   <Insets top="100.0" />
@@ -143,9 +135,17 @@
                   <Font name="Poppins Regular" size="20.0" />
                </font>
             </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+               <font>
+                  <Font name="Poppins Regular" size="29.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="60.0" />
+               </StackPane.margin>
+            </Text>
          </children>
       </StackPane>
-      <Text fill="WHITE" layoutX="341.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 VS 1 Mode">
+      <Text fill="WHITE" layoutX="327.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Single Mode">
          <font>
             <Font name="Poppins Bold" size="31.0" />
          </font>
