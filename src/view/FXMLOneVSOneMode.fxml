@@ -10,8 +10,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -22,9 +20,9 @@
             <Image url="@../resources/login.png" />
          </image>
       </ImageView>
-      <StackPane layoutX="279.0" layoutY="104.0" prefHeight="150.0" prefWidth="200.0">
+      <StackPane layoutX="276.0" layoutY="79.0" prefHeight="309.0" prefWidth="303.0">
          <children>
-            <ImageView fitHeight="290.0" fitWidth="290.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="318.0" fitWidth="335.0" opacity="0.0" pickOnBounds="true">
                <image>
                   <Image url="@../resources/modesBtnBg@2x.png" />
                </image>
@@ -32,11 +30,11 @@
                   <GaussianBlur />
                </effect>
             </ImageView>
-            <GridPane prefHeight="290.0" prefWidth="290.0">
+            <GridPane prefHeight="318.0" prefWidth="302.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="123.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -44,114 +42,58 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <StackPane>
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <textFill>
-                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                 <stops>
-                                    <Stop color="BLACK" />
-                                    <Stop color="#1e1919" offset="1.0" />
-                                 </stops>
-                              </RadialGradient>
-                           </textFill>
-                        </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font></Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.rowIndex="2">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.rowIndex="1">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.columnIndex="2">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <StackPane GridPane.columnIndex="1">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="98.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textAlignment="CENTER" textFill="#beffbe" wrapText="true">
+                     <font>
+                        <Font name="Phosphate Inline" size="50.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#ffe591" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Phosphate Inline" size="46.0" />
+                     </font>
+                  </Button>
                </children>
             </GridPane>
          </children>
       </StackPane>
-      <Button layoutX="333.0" layoutY="403.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Play Again" textFill="WHITE">
+      <Button layoutX="332.0" layoutY="413.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Play Again" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Poppins Regular" size="20.0" />
          </font></Button>
       <StackPane layoutX="649.0" layoutY="77.0">
          <children>
@@ -170,7 +112,7 @@
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="Poppins Regular" size="20.0" />
                </font>
                <StackPane.margin>
                   <Insets top="100.0" />
@@ -198,14 +140,14 @@
                   <Insets top="100.0" />
                </StackPane.margin>
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="Poppins Regular" size="20.0" />
                </font>
             </Text>
          </children>
       </StackPane>
-      <Text fill="WHITE" layoutX="328.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 VS 1 Mode">
+      <Text fill="WHITE" layoutX="341.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 VS 1 Mode">
          <font>
-            <Font name="System Bold" size="32.0" />
+            <Font name="Poppins Bold" size="31.0" />
          </font>
       </Text>
    </children>
