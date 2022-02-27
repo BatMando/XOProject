@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLChooseLevelController">
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLChooseLevelController">
     <children>
       <ImageView fitHeight="476.0" fitWidth="846.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,7 +31,7 @@
                   <Font name="Raleway SemiBold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" opacity="0.0" prefHeight="74.0" prefWidth="308.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#navigateToEasyMode" opacity="0.0" prefHeight="74.0" prefWidth="308.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
       <Label layoutX="275.0" layoutY="36.0" text="Select Game Level" textAlignment="CENTER" textFill="WHITE">
@@ -54,7 +54,7 @@
                   <Font name="Raleway SemiBold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" opacity="0.0" prefHeight="74.0" prefWidth="308.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="hardBtn" mnemonicParsing="false" onAction="#navigateToHardMode" opacity="0.0" prefHeight="74.0" prefWidth="308.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
       <StackPane layoutX="14.0" layoutY="30.0">
@@ -64,7 +64,7 @@
                   <Image url="@../resources/backBtn@2x.png" />
                </image>
             </ImageView>
-            <Button fx:id="backBtn" mnemonicParsing="false" opacity="0.0" prefHeight="74.0" prefWidth="58.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="74.0" prefWidth="58.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
     </children>

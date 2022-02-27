@@ -19,12 +19,17 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLOneVSOneMode.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Home");
+        stage.setMinWidth(635);
+        stage.setMinHeight(470);
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest((event) -> {
+            System.exit(1);
+        });    
     }
 
     /**
