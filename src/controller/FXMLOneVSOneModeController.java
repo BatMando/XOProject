@@ -5,6 +5,9 @@
  */
 package controller;
 
+import Helper.NavigationController;
+import java.awt.Color;
+import java.awt.Paint;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +47,10 @@ public class FXMLOneVSOneModeController implements Initializable {
     private Button pressedButton;
     private boolean isXorO = false;
     private int counter = 0;
-    //private boolean isWinner = false;
     private boolean isFullGame = false;
-    private Text winnerText;
+    
+    @FXML
+    private Button backBtn;
     /**
      * Initializes the controller class.
      */
@@ -54,33 +58,53 @@ public class FXMLOneVSOneModeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-    }    
+    }
     
-    public void makeButtonsEnabled(){
-        btn1.setDisable(true);
-        btn2.setDisable(true);
-        btn3.setDisable(true);
-        btn4.setDisable(true);
-        btn5.setDisable(true);
-        btn6.setDisable(true);
-        btn7.setDisable(true);
-        btn8.setDisable(true);
-        btn9.setDisable(true);
+    @FXML
+    public void onAnyButtonClicked(ActionEvent e){
+        pressedButton = (Button) e.getSource();
+        if(pressedButton.getText().equals("") && !isFullGame){
+            if (isXorO == false){
+                pressedButton.setText("X");
+                //pressedButton.backgroundProperty();
+                isXorO = true;
+            }
+            else if(isXorO == true){
+                pressedButton.setText("O");
+                isXorO = false;
+            }
+            counter++;
+            checkIfGameIsOver();
+        }
     }
-    public void makeButtonsDisabled(){
-        btn1.setDisable(false);
-        btn2.setDisable(false);
-        btn3.setDisable(false);
-        btn4.setDisable(false);
-        btn5.setDisable(false);
-        btn6.setDisable(false);
-        btn7.setDisable(false);
-        btn8.setDisable(false);
-        btn9.setDisable(false);
+    @FXML
+    public void backToMainPage(ActionEvent event) {
+        System.out.println("backToMainPage: called");
+        NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
+        btnback.navigateTo(event);
     }
-    public boolean isFull(){
-        return counter == 9;
+    
+    public boolean checkWinner(String line){
+        //X winner
+        if ((line != null) && line.equals("XXX")) {
+            System.out.println("X won!");
+            isFullGame = true;
+        }
+        //O winner
+        else if ((line != null) && line.equals("OOO")) {
+            System.out.println("O won!");
+            isFullGame = true;
+        }
+        //it is a draw
+        else if(counter == 9){
+            System.out.println("Draw");
+            isFullGame = true;
+        }
+        if(isFullGame)
+            updateButtonAccess();
+        return isFullGame;
     }
+    
     public void checkIfGameIsOver(){
         for (int a = 0; a < 8; a++) {
             String line = ""; 
@@ -112,48 +136,40 @@ public class FXMLOneVSOneModeController implements Initializable {
                     break;
                 default: line = null;
             };
-            
-            //X winner
-            if ((line != null) && line.equals("XXX")) {
-                System.out.println("X won!");
-                //winnerText.setText("X won!");
-                makeButtonsDisabled();
-                isFullGame = true;
-            }
-
-            //O winner
-            else if ((line != null) && line.equals("OOO")) {
-                System.out.println("O won!");
-                //winnerText.setText("O won!");
-                makeButtonsDisabled();
-                isFullGame = true;
-            }
+            if(checkWinner(line))
+                break;
         }
     }
-    public void onAnyButtonClicked(ActionEvent e){
-        
-        pressedButton = (Button) e.getSource();
-        
-        if(pressedButton.getText().equals("") && isFullGame == false){
-            if(counter == 9){
-                System.out.println("Draw");
-                winnerText.setText("It's Draw!");
-            }
-            else if (isXorO == false){
-                pressedButton.setText("X");
-                isXorO = true;
-                counter++;
-                checkIfGameIsOver();
-                
-            }
-            else if(isXorO == true){
-                pressedButton.setText("O");
-                isXorO = false;
-                counter++;
-                checkIfGameIsOver();
-            }
-        }
+    public void updateGame(){
+        isFullGame = false;
+        updateButtonAccess();
     }
-    
-    
+    public void updateButtonAccess(){
+        if(btn1.isDisable())
+            makeButtonsEnabled();
+        else
+            makeButtonsDisabled();
+    }
+    public void makeButtonsEnabled(){
+        btn1.setDisable(true);
+        btn2.setDisable(true);
+        btn3.setDisable(true);
+        btn4.setDisable(true);
+        btn5.setDisable(true);
+        btn6.setDisable(true);
+        btn7.setDisable(true);
+        btn8.setDisable(true);
+        btn9.setDisable(true);
+    }
+    public void makeButtonsDisabled(){
+        btn1.setDisable(false);
+        btn2.setDisable(false);
+        btn3.setDisable(false);
+        btn4.setDisable(false);
+        btn5.setDisable(false);
+        btn6.setDisable(false);
+        btn7.setDisable(false);
+        btn8.setDisable(false);
+        btn9.setDisable(false);
+    }
 }
