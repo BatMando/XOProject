@@ -167,7 +167,7 @@ public class FXMLOneVSComputerModeController implements Initializable {
                     }        
                 }else{
                     if(isFullGrid() && !winner){
-                        //txtWinner.setText("It's a Draw");
+                        displayVideo("draw");
                         playAgainBtn.setVisible(true);
                     }
                 }
@@ -370,33 +370,20 @@ public class FXMLOneVSComputerModeController implements Initializable {
         checkRows();
         checkDiagonal();
         if(display){
-            //displayVideo("winner");             
+            displayVideo("winner");             
             System.out.println("Synch");
             prefs.putInt("score",score);
             playAgainBtn.setVisible(true);
         }else if(computerWin){
             System.out.println("computer wins");
-            //displayVideo("lose");
+            displayVideo("loser");
            playAgainBtn.setVisible(true); 
            
         }
 
     }
     
-    
-      /**         
-     * displayVideo called when player win
-     */
-//    private void displayVideo(){
-//        ButtonBack displayVideo = new ButtonBack("/view/VideoWindow.fxml");
-//        displayVideo.displayVideo("winner","Congratulation");
-//    }
-//    
-     /**
-     * backToMainPage.
-     * when called scene will be change to main page.
-     * @param event 
-     */
+   
     @FXML
     public void backToMainPage(ActionEvent event){
         System.out.println("backToMainPage: called");
@@ -405,11 +392,7 @@ public class FXMLOneVSComputerModeController implements Initializable {
         
     } 
   
-    /**
-     * repalayAgain 
-     * when called make labe for winner empty and make button Visible
-     * @param event 
-     */
+   
     @FXML
       public void replayAgain(ActionEvent event){
 
@@ -420,14 +403,17 @@ public class FXMLOneVSComputerModeController implements Initializable {
 
          
     } 
-//  
-//      private void displayVideo(String type){
-//        if(type.equals("winner")){
-//           ButtonBack displayVideo = new ButtonBack("/view/VideoWindow.fxml");
-//           displayVideo.displayVideo("winner","Congratulation"); 
-//        }else{
-//           ButtonBack displayVideo = new ButtonBack("/view/VideoWindow.fxml");
-//           displayVideo.displayVideo("opps","opps!!");  
-//        }
-//    }
+
+      private void displayVideo(String type){
+        if(type.equals("winner")){
+           NavigationController displayVideo = new NavigationController("/view/FXMLVideo.fxml");
+           displayVideo.displayVideo("winner","Congratulation"); 
+        }else if(type.equals("loser")){
+           NavigationController displayVideo = new NavigationController("/view/FXMLVideo.fxml");
+           displayVideo.displayVideo("loser","opps!!");  
+        }else{
+             NavigationController displayVideo = new NavigationController("/view/FXMLVideo.fxml");
+           displayVideo.displayVideo("draw","opps!!");  
+        }
+    }
 }

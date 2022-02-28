@@ -1,6 +1,6 @@
 package Helper;
 
-
+import controller.FXMLVideoController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,6 +112,51 @@ public class NavigationController {
 
 
     }
+    public void displayVideo(String playerWinnerOrNot, String title){
+        try {
+            //get scene
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(source));
+            Parent root = (Parent)fxmlLoader.load(); 
+            
+            
+            FXMLVideoController controller = fxmlLoader.<FXMLVideoController>getController();
+            controller.setType(playerWinnerOrNot);
+            //generate new scene
+            Scene RegisterScene = new Scene(root);
+            fxmlLoader.setController(controller);
+            
+            
+        
+            //get stage information
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle(title);
+            window.setScene(RegisterScene);
+            window.setMinHeight(280);
+            window.setMinWidth(500);
+            
+            window.setResizable(false);
+            window.show();
+            
+            
+                PauseTransition wait = new PauseTransition(Duration.seconds(20));
+                            wait.setOnFinished((e) -> {
+                                /*YOUR METHOD*/
+                                window.close();
+                                //btn.setDisable(false);
+                                wait.playFromStart();
+                            });
+                            wait.play();
+                            
+                window.setOnCloseRequest((event) -> {
+                    System.out.println("closing vid");
+                     FXMLVideoController.mp.stop();
+                });
+        } catch (IOException ex) {
+            Logger.getLogger(NavigationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
 
 }

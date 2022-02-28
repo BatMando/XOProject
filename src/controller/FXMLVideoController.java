@@ -42,7 +42,7 @@ public class FXMLVideoController implements Initializable {
             setMedia("/resources/winner.mp4");
         } else if (typePlayer.equals("loser")) {
             setMedia("/resources/loser.mp4");
-        }else{
+        }else if (typePlayer.equals("draw")) {
             setMedia("/resources/draw.mp4");
         }
 
