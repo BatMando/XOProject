@@ -5,6 +5,8 @@
  */
 package controller;
 
+import Helper.ReadWriteHelper;
+import Helper.AskDialog;
 import Helper.CustomDialog;
 import Helper.NavigationController;
 import java.net.URL;
@@ -27,8 +29,10 @@ public class FXMLChooseLevelController implements Initializable {
 
     @FXML
     private Button backBtn;
-
+    
+    static boolean isrecord=false;
     Preferences prefs;
+    
     @FXML
     private Button hardBtn;
     @FXML
@@ -60,10 +64,37 @@ public class FXMLChooseLevelController implements Initializable {
                 Boolean isCancelled = cd.displayDialog("Enter Your Name");
                 if(!isCancelled){
                 prefs.put("username", cd.getName());
+                 AskDialog isrecoredGame = new AskDialog();
+                 Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                     if(check)
+                       {
+                        ReadWriteHelper.createFile("local-mode");
+                        ReadWriteHelper.writeFile(prefs.get("username","")+".");
+                        ReadWriteHelper.writeFile("user"+".");
+                        isrecord=true;
+                        }
                 NavigationController navToEasy = new NavigationController("/view/FXMLOneVSComputerMode.fxml");
                 navToEasy.navigateTo(event);
+                
                 }
+            }else
+            {
+                  AskDialog isrecoredGame = new AskDialog();
+
+                  Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                  if(check)
+                  {
+                   ReadWriteHelper.createFile("local-mode");
+                   ReadWriteHelper.writeFile(prefs.get("username", "")+".");
+                   ReadWriteHelper.writeFile("user"+".");
+                     isrecord=true;
+                  }
+                   
+              NavigationController navToEasy = new NavigationController("/view/FXMLOneVSComputerMode.fxml");
+                navToEasy.navigateTo(event);
+                
             }
+            
 
         } catch (BackingStoreException ex) {
             Logger.getLogger(FXMLChooseLevelController.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,9 +114,35 @@ public class FXMLChooseLevelController implements Initializable {
                 Boolean isCancelled = cd.displayDialog("Enter Your Name");
                 if(!isCancelled){
                 prefs.put("username", cd.getName());
-                NavigationController navToHard = new NavigationController("/view/FXMLOneVSComputerMode.fxml");
-                navToHard.navigateTo(event);
-                } 
+                AskDialog isrecoredGame = new AskDialog();
+                 Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                     if(check)
+                       {
+                        ReadWriteHelper.createFile("local-mode");
+                        ReadWriteHelper.writeFile(prefs.get("username","")+".");
+                        ReadWriteHelper.writeFile("user"+".");
+                        isrecord=true;
+                        }
+                NavigationController navToEasy = new NavigationController("/view/FXMLOneVSComputerModeHard.fxml");
+                navToEasy.navigateTo(event);
+                
+                }
+            }else
+            {
+                  AskDialog isrecoredGame = new AskDialog();
+
+                  Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                  if(check)
+                  {
+                   ReadWriteHelper.createFile("local-mode");
+                   ReadWriteHelper.writeFile(prefs.get("username", "")+".");
+                   ReadWriteHelper.writeFile("user"+".");
+                     isrecord=true;
+                  }
+                   
+              NavigationController navToEasy = new NavigationController("/view/FXMLOneVSComputerModeHard.fxml");
+                navToEasy.navigateTo(event);
+                
             }
 
         } catch (BackingStoreException ex) {

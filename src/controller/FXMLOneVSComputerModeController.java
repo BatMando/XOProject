@@ -6,6 +6,7 @@
 package controller;
 
 import Helper.NavigationController;
+import Helper.ReadWriteHelper;
 import java.awt.Color;
 import java.net.URL;
 import java.util.Random;
@@ -14,15 +15,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
 /**
@@ -108,7 +106,8 @@ public class FXMLOneVSComputerModeController implements Initializable {
                     buttonPressed.setStyle("-fx-background-color:#ffffff57;"+"-fx-text-fill: #AFE0AF;"); 
                 //buttonPressed.setStyle("-fx-background-color:#ffffff57;"); 
                 buttonPressed.setText(player);
-                
+                if(FXMLChooseLevelController.isrecord)
+                 ReadWriteHelper.writeFile(buttonPressed.getId()+buttonPressed.getText()+".");
                 
                 if(player=="X"){
                     player="O";
@@ -157,7 +156,8 @@ public class FXMLOneVSComputerModeController implements Initializable {
                     buttonPressed.setStyle("-fx-background-color:#ffffff57;"+"-fx-text-fill: #ffe591;"); 
                     
                     buttonPressed.setText(""+player);
-                    
+                    if(FXMLChooseLevelController.isrecord)
+                    ReadWriteHelper.writeFile(buttonPressed.getId()+buttonPressed.getText()+".");
 
                     if(player=="X"){
                         player="O";

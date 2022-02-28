@@ -15,16 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
-/**
- *
- * @author dell
- */
+
 public class ReadWriteHelper {
     
     
    private static File file;
    static String filePath = new File("").getAbsolutePath();
-   static String pathLocalFile = filePath.concat("\\src\\savedGame\\");
+   static String pathLocalFile = filePath.concat("\\src\\savedLocalGame\\");
    static String pathOnlineFile = filePath.concat("\\src\\savedOnlineGame\\");
 
     
@@ -37,25 +34,21 @@ public class ReadWriteHelper {
 
         Preferences prefs=Preferences.userNodeForPackage(ReadWriteHelper.class);
         
-        Preferences pref=Preferences.userNodeForPackage(OnlinePlayerController.class);
+        //Preferences pref=Preferences.userNodeForPackage(OnlinePlayerController.class);
         
-          CurrentDateTime c=new CurrentDateTime();
+          CustomDate c=new CustomDate();
 
-         
-       
-        
         if(listType.equals("local-mode")){
             prefs.put(c.getCurrentDateTime(), c.getCurrentDateTime()); 
-//            file = new File(pathLocalFile+prefs.get(c.getCurrentDateTime(),""));
-              File dir = new File("record/savedGame");
+              File dir = new File("record/savedLocalGame");
               dir.mkdirs();
               file = new File(dir,prefs.get(c.getCurrentDateTime(),""));
               
         }else if(listType.equals("online-mode")){
             File dir = new File("record/savedOnlineGame");
             dir.mkdirs();
-            pref.put(c.getCurrentDateTime(), c.getCurrentDateTime());
-            file = new File(dir,pref.get(c.getCurrentDateTime(),""));
+           // pref.put(c.getCurrentDateTime(), c.getCurrentDateTime());
+           // file = new File(dir,pref.get(c.getCurrentDateTime(),""));
             
         }  
            try {
@@ -64,7 +57,7 @@ public class ReadWriteHelper {
                    System.out.println("file created");
                             
            } catch (IOException ex) {
-               Logger.getLogger(AccessFile.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(ReadWriteHelper.class.getName()).log(Level.SEVERE, null, ex);
            }
    }
 
@@ -85,21 +78,22 @@ public class ReadWriteHelper {
             }
         } catch (IOException ex) {
             System.out.println("error during write file");
-            Logger.getLogger(AccessFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReadWriteHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
               
     }
+    
     public static String readFileAsString(String fileName) 
-  {  String data = "";
+    {  String data = "";
        try {
           
            data = new String(Files.readAllBytes(Paths.get(fileName))); 
            
        } catch (IOException ex) {
          
-           Logger.getLogger(AccessFile.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(ReadWriteHelper.class.getName()).log(Level.SEVERE, null, ex);
        }
      return data;   
-  }
+    }
 }
 
