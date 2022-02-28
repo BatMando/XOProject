@@ -150,5 +150,15 @@
             <Font name="Poppins Bold" size="31.0" />
          </font>
       </Text>
+      <StackPane layoutX="14.0" layoutY="25.0">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/backBtn@2x.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="74.0" prefWidth="58.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
