@@ -91,7 +91,7 @@
             </GridPane>
          </children>
       </StackPane>
-      <Button layoutX="332.0" layoutY="413.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Play Again" textFill="WHITE">
+      <Button fx:id="playAgainBtn" layoutX="332.0" layoutY="413.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Play Again" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="20.0" />
          </font></Button>
@@ -110,7 +110,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
+            <Text fx:id="player2Name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
                <font>
                   <Font name="Poppins Regular" size="20.0" />
                </font>
@@ -135,7 +135,7 @@
                   <Insets bottom="10.0" left="60.0" />
                </StackPane.margin>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
+            <Text fx:id="player1Name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
                <StackPane.margin>
                   <Insets top="100.0" />
                </StackPane.margin>

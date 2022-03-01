@@ -1,7 +1,10 @@
 package controller;
 
+import Helper.AskDialog;
 import Helper.NavigationController;
 import Helper.CustomDialog;
+import Helper.ReadWriteHelper;
+import static controller.FXMLChooseLevelController.isrecord;
 import java.util.prefs.Preferences;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,6 +47,17 @@ public class FXMLHomeScreenController implements Initializable {
              System.out.println("secondPlayer" +secondtPlayerNameDialog.getName() );
              prefs.put("secondPlayer", secondtPlayerNameDialog.getName());
              prefs.putInt("secondPlayerScore",0);
+            AskDialog isrecoredGame = new AskDialog();
+            Boolean check=isrecoredGame.alert("Do you want to record game ?");
+            if(check)
+            {
+                ReadWriteHelper.createFile("local-mode");
+                ReadWriteHelper.writeFile(prefs.get("fristPlayer","")+".");
+                ReadWriteHelper.writeFile(prefs.get("secondPlayer", "") + ".");
+                ReadWriteHelper.writeFile("fristPlayer"+".");
+                ReadWriteHelper.writeFile("secondPlayer"+".");
+                isrecord=true;
+            }
              NavigationController nav = new NavigationController("/view/FXMLOneVSOneMode.fxml");
              nav.navigateTo(event);
            }
