@@ -24,6 +24,10 @@ public class FXMLHomeScreenController implements Initializable {
     int checkname;
     @FXML
     private Button oneVSOneBtn;
+    @FXML
+    private Button onlineModeBtn;
+    @FXML
+    private Button gameRecordsBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,6 +71,18 @@ public class FXMLHomeScreenController implements Initializable {
     public void navigateToChooseLevelScreen(ActionEvent event) {
         NavigationController navigateToSinglePlay = new NavigationController("/view/FXMLChooseLevel.fxml");
         navigateToSinglePlay.navigateTo(event);
+
+    }
+    @FXML
+    public void navigateToRecordedGamesScreen(ActionEvent event) {
+        NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
+        navigateToRecordedGames.navigateTo(event);
+
+    }
+    @FXML
+    public void navigateToOnlineMode(ActionEvent event) {
+        NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
+        navigateToRecordedGames.navigateTo(event);
 
     }
 
