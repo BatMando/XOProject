@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,7 +20,7 @@
       </ImageView>
       <StackPane layoutX="254.4499969482422" layoutY="97.44999694824219">
          <children>
-            <ImageView fitHeight="318.0" fitWidth="335.0" opacity="0.34" pickOnBounds="true">
+            <ImageView fitHeight="318.0" fitWidth="335.0" opacity="0.0" pickOnBounds="true">
                <image>
                   <Image url="@../resources/modesBtnBg@2x.png" />
                </image>
@@ -27,7 +28,11 @@
                   <GaussianBlur radius="1.55" />
                </effect>
             </ImageView>
-            <ListView fx:id="recordsListView" prefHeight="318.0" prefWidth="335.0" style="-fx-background-color: transparent;;" />
+            <ScrollPane fx:id="recordScroll" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;;">
+               <content>
+                  <ListView fx:id="recordsListView" editable="true" onMouseClicked="#selectedItem" prefHeight="318.0" prefWidth="335.0" style="-fx-background-color: transparent;" />
+               </content>
+            </ScrollPane>
          </children>
       </StackPane>
       <Text fill="WHITE" layoutX="359.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Records">
