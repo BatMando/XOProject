@@ -117,7 +117,7 @@
                   <Insets />
                </StackPane.margin>
             </VBox>
-            <Button mnemonicParsing="false" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="onlineModeBtn" mnemonicParsing="false" onAction="#navigateToOnlineMode" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
       <Label layoutX="275.0" layoutY="36.0" text="Select Game Mode" textAlignment="CENTER" textFill="WHITE">
@@ -155,7 +155,7 @@
                   <Insets />
                </StackPane.margin>
             </VBox>
-            <Button mnemonicParsing="false" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+            <Button fx:id="gameRecordsBtn" mnemonicParsing="false" onAction="#navigateToRecordedGamesScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
     </children>
