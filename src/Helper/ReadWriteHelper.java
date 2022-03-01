@@ -21,8 +21,7 @@ public class ReadWriteHelper {
     
    private static File file;
    static String filePath = new File("").getAbsolutePath();
-   static String pathLocalFile = filePath.concat("\\src\\savedLocalGame\\");
-   static String pathOnlineFile = filePath.concat("\\src\\savedOnlineGame\\");
+   
 
     
     public ReadWriteHelper() {

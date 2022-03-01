@@ -1,6 +1,8 @@
 package Helper;
 
+import controller.FXMLRecordsScreenController;
 import controller.FXMLVideoController;
+import controller.FXMLWatchGameScreenController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,16 +58,16 @@ public class NavigationController {
 
 
 
-    public void handleButtonBack(ActionEvent event,String listType){
+    public void navigateToRecordList(ActionEvent event,String listType){
          //get scene
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(source));
             Parent root = (Parent)fxmlLoader.load();   
-          //  ListRecordedGamesController controller = fxmlLoader.<ListRecordedGamesController>getController();
-           // controller.setType(listType);
+           FXMLRecordsScreenController controller = fxmlLoader.<FXMLRecordsScreenController>getController();
+           controller.setType(listType);
 
             Scene buttonScene = new Scene(root);
-          //  fxmlLoader.setController(controller);
+           fxmlLoader.setController(controller);
            //get stage information
            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -82,28 +84,22 @@ public class NavigationController {
 
 
 
-    public void handleButtonBack(MouseEvent event,String listType){
-
+    public void navigateToWatchGame(MouseEvent event,String listType){
          //get scene
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(source));
             Parent root = (Parent)fxmlLoader.load();   
 
-          // WatchGameController controller = fxmlLoader.<WatchGameController>getController();
-           // controller.setType(listType);
-
-
-           // Scene buttonScene = new Scene(root);
-            //fxmlLoader.setController(controller);
+           FXMLWatchGameScreenController controller = fxmlLoader.<FXMLWatchGameScreenController>getController();
+           controller.setType(listType);
+           Scene buttonScene = new Scene(root);
+           fxmlLoader.setController(controller);
+            
            //get stage information
 
            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
            window.setTitle("List Player");
-
-
-
-         //  window.setScene(buttonScene);
+           window.setScene(buttonScene);
            window.show();
         } catch (IOException ex) {
             System.out.println("handle button back catch");
@@ -116,17 +112,13 @@ public class NavigationController {
         try {
             //get scene
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(source));
-            Parent root = (Parent)fxmlLoader.load(); 
-            
-            
+            Parent root = (Parent)fxmlLoader.load();        
             FXMLVideoController controller = fxmlLoader.<FXMLVideoController>getController();
             controller.setType(playerWinnerOrNot);
             //generate new scene
             Scene RegisterScene = new Scene(root);
             fxmlLoader.setController(controller);
-            
-            
-        
+           
             //get stage information
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
@@ -139,7 +131,7 @@ public class NavigationController {
             window.show();
             
             
-                PauseTransition wait = new PauseTransition(Duration.seconds(20));
+                PauseTransition wait = new PauseTransition(Duration.seconds(10));
                             wait.setOnFinished((e) -> {
                                 /*YOUR METHOD*/
                                 window.close();

@@ -54,7 +54,7 @@ public class FXMLVideoController implements Initializable {
         mp = new MediaPlayer(media);
         videoPlayer.setMediaPlayer(mp);
         mp.play();
-
+        mp.setCycleCount(MediaPlayer.INDEFINITE);
     }
 
     //setType
