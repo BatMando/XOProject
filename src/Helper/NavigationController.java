@@ -6,7 +6,6 @@ import controller.FXMLWatchGameScreenController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /**
  *
@@ -129,21 +127,11 @@ public class NavigationController {
             
             window.setResizable(false);
             window.show();
-            
-            
-                PauseTransition wait = new PauseTransition(Duration.seconds(10));
-                            wait.setOnFinished((e) -> {
-                                /*YOUR METHOD*/
-                                window.close();
-                                //btn.setDisable(false);
-                                wait.playFromStart();
-                            });
-                            wait.play();
-                            
-                window.setOnCloseRequest((event) -> {
-                    System.out.println("closing vid");
-                     FXMLVideoController.mp.stop();
-                });
+                              
+            window.setOnCloseRequest((event) -> {
+                System.out.println("closing vid");
+                 FXMLVideoController.mp.stop();
+            });
         } catch (IOException ex) {
             Logger.getLogger(NavigationController.class.getName()).log(Level.SEVERE, null, ex);
         }

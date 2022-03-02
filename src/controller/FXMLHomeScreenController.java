@@ -3,11 +3,18 @@ package controller;
 import Helper.AskDialog;
 import Helper.NavigationController;
 import Helper.CustomDialog;
+import Helper.IpValidation;
 import Helper.ReadWriteHelper;
 import static controller.FXMLChooseLevelController.isrecord;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.util.prefs.Preferences;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,8 +27,7 @@ public class FXMLHomeScreenController implements Initializable {
     @FXML
     private Button singleModeBtn;
 
-   Preferences prefs ;
-    int checkname;
+   
     @FXML
     private Button oneVSOneBtn;
     @FXML
@@ -29,6 +35,13 @@ public class FXMLHomeScreenController implements Initializable {
     @FXML
     private Button gameRecordsBtn;
 
+    static boolean checkip=false;
+    static Socket socket;
+    static DataInputStream dis;
+    static PrintStream ps;
+    Preferences prefs ;
+    int checkname;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -79,11 +92,72 @@ public class FXMLHomeScreenController implements Initializable {
         navigateToRecordedGames.navigateToRecordList(event,"local-mode");
 
     }
-    @FXML
     public void navigateToOnlineMode(ActionEvent event) {
         NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
         navigateToRecordedGames.navigateTo(event);
 
     }
+    
+    @FXML
+      public void changeSceneToOnlineGame(ActionEvent event) {
+        System.out.println("changeSceneToOnlineGame: called");
+        NavigationController navigateToLoginOrRegister = new NavigationController("/view/FXMLLogin.fxml");
+        navigateToLoginOrRegister.navigateTo(event);
+        //CustomDialog cd = new CustomDialog();
+       // Boolean isCancled = cd.displayDialog("Enter Server IP");
+        // System.out.println("you entered ip ="+cd.getName());
+         
 
+       // if(!isCancled){   
+       // boolean conn= connection(cd.getName());
+        
+       // if(conn){ 
+       //  checkip=true;
+        // NavigationController navigateToLoginOrRegister = new NavigationController("/view/FXMLLogin.fxml");
+       //  System.out.println("socket is "+socket.isConnected()+" from main controller");
+       //  navigateToLoginOrRegister.navigateTo(event);
+       // }else 
+       // {AskDialog dialog=new AskDialog();
+       //  dialog.inValidIp("you entered an InValid IP, Please try Again");
+       // }
+
+       // }
+                                
+    }
+
+      
+       public boolean connection(String s){
+           
+        if(IpValidation.isValidIPAddress(s)) { 
+        try {
+            System.out.println("enter try valip ip");
+            if(socket == null || socket.isClosed()){
+                socket = new Socket(s,9081);
+                System.out.println("conncet valid ip ");
+                System.out.println(IpValidation.getIp());
+                dis = new DataInputStream(socket.getInputStream());
+                ps = new PrintStream(socket.getOutputStream());
+            }
+
+            return true;
+        } catch (IOException ex) {
+            try {
+                System.out.println("closing socket in home controller");
+                if(socket != null){
+                    socket.close();
+                    dis.close();
+                    ps.close();
+                }
+                        
+            } catch (IOException ex1) {
+                Logger.getLogger(FXMLHomeScreenController.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return false;
+        }
+                
+        }else {      
+            checkip=false;
+            return false;
+             }
+        }
 }

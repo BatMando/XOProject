@@ -50,7 +50,6 @@ public class AskDialog {
         a.setTitle(title);
         a.getDialogPane().getButtonTypes().addAll(yes, no);
         a.setHeaderText(message);
-        DialogPane dialogPane = a.getDialogPane();
         
         a.showAndWait();
 
@@ -60,7 +59,15 @@ public class AskDialog {
         return false;
     }
 
-
+    public void inValidIp(String s){
+        ButtonType Ok = new ButtonType("Ok"); 
+         Alert alert = new Alert(Alert.AlertType.NONE); 
+        alert.setTitle("Alert ASk");
+        alert.getDialogPane().getButtonTypes().addAll(Ok);
+        alert.setHeaderText(s);
+        alert.showAndWait();
+        
+    }
 
 
 }
