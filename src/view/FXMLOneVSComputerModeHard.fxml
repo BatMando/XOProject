@@ -42,47 +42,47 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btn1" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textAlignment="CENTER" textFill="#beffbe" wrapText="true">
+                  <Button fx:id="btn1" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textAlignment="CENTER" textFill="#beffbe" wrapText="true">
                      <font>
                         <Font name="Phosphate Inline" size="50.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn9" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="btn9" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn8" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="btn8" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn7" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.rowIndex="2">
+                  <Button fx:id="btn7" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.rowIndex="2">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn6" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="btn6" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn5" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="btn5" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn4" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.rowIndex="1">
+                  <Button fx:id="btn4" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.rowIndex="1">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn3" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.columnIndex="2">
+                  <Button fx:id="btn3" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="X" textFill="#beffbe" GridPane.columnIndex="2">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn2" mnemonicParsing="false" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="1">
+                  <Button fx:id="btn2" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="97.0" prefWidth="98.0" style="-fx-background-color: #ffffff57;" text="o" textFill="#ffe591" GridPane.columnIndex="1">
                      <font>
                         <Font name="Phosphate Inline" size="46.0" />
                      </font>
@@ -91,7 +91,7 @@
             </GridPane>
          </children>
       </StackPane>
-      <Button fx:id="playAgainBtn" layoutX="332.0" layoutY="413.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Play Again" textFill="WHITE">
+      <Button fx:id="playAgainBtn" layoutX="332.0" layoutY="413.0" mnemonicParsing="false" onAction="#playAgainBtn" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Play Again" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="20.0" />
          </font></Button>
@@ -150,10 +150,15 @@
             <Font name="Poppins Bold" size="31.0" />
          </font>
       </Text>
-      <ImageView fx:id="backBtn" fitHeight="60.0" fitWidth="89.0" layoutX="28.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/backBtn@2x.png" />
-         </image>
-      </ImageView>
+      <StackPane layoutX="28.0" layoutY="17.0">
+         <children>
+            <ImageView fx:id="backBtn" fitHeight="60.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/backBtn@2x.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
