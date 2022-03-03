@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLOnlineModeController">
+   <children>
+      <ImageView fitHeight="476.0" fitWidth="846.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/login.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="334.0" layoutY="42.0" text="Online Mode" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="31.0" />
+         </font>
+      </Label>
+      <StackPane layoutX="121.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
+         <children>
+            <ImageView fitHeight="184.0" fitWidth="158.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/modesBtnBg@2x.png" />
+               </image>
+               <effect>
+                  <GaussianBlur radius="1.55" />
+               </effect>
+            </ImageView>
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="84.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/findPlayersImg@2x.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Find Player" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Raleway SemiBold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </VBox>
+            <Button fx:id="findPlayerBtn" mnemonicParsing="false" onAction="#navigateToFindPlayerScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="345.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
+         <children>
+            <ImageView fitHeight="184.0" fitWidth="158.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/modesBtnBg@2x.png" />
+               </image>
+               <effect>
+                  <GaussianBlur radius="1.55" />
+               </effect>
+            </ImageView>
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="84.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/leaderboardImg@2x.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="4.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="Leaderboard " textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Raleway SemiBold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </VBox>
+            <Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#navigateToLeaderboardScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="575.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
+         <children>
+            <ImageView fitHeight="184.0" fitWidth="158.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/modesBtnBg@2x.png" />
+               </image>
+               <effect>
+                  <GaussianBlur radius="1.55" />
+               </effect>
+            </ImageView>
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="84.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/recordsImg@2x.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Game Records" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Raleway SemiBold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </VBox>
+            <Button fx:id="gameRecordsBtn" mnemonicParsing="false" onAction="#navigateToRecordedGamesScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="41.0" layoutY="35.0">
+         <children>
+            <ImageView fx:id="backBtn" fitHeight="60.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/backBtn@2x.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
+         </children>
+      </StackPane>
+      <HBox layoutX="649.0" layoutY="35.0" prefHeight="52.0" prefWidth="168.0">
+         <children>
+            <ImageView fitHeight="52.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/scorePointsImg@2x.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="12345" textAlignment="CENTER" wrappingWidth="110.6708984375">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
