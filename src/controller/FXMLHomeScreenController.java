@@ -19,19 +19,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 
 public class FXMLHomeScreenController implements Initializable {
 
 
-    @FXML
-    private Button singleModeBtn;
-
-   
-    @FXML
-    private Button oneVSOneBtn;
-    @FXML
-    private Button onlineModeBtn;
     @FXML
     private Button gameRecordsBtn;
 
@@ -41,6 +34,12 @@ public class FXMLHomeScreenController implements Initializable {
     static PrintStream ps;
     Preferences prefs ;
     int checkname;
+    @FXML
+    private Button singleModeBtn;
+    @FXML
+    private Button oneVSOneBtn;
+    @FXML
+    private Button onlineModeBtn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,11 +89,6 @@ public class FXMLHomeScreenController implements Initializable {
     public void navigateToRecordedGamesScreen(ActionEvent event) {
         NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
         navigateToRecordedGames.navigateToRecordList(event,"local-mode");
-
-    }
-    public void navigateToOnlineMode(ActionEvent event) {
-        NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
-        navigateToRecordedGames.navigateTo(event);
 
     }
     
@@ -160,4 +154,5 @@ public class FXMLHomeScreenController implements Initializable {
             return false;
              }
         }
+
 }

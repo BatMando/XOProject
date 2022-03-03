@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLLoginController">
@@ -30,16 +31,26 @@
             <Font name="Raleway SemiBold" size="34.0" />
          </font>
       </Label>
-      <TextField focusTraversable="false" layoutX="332.0" layoutY="211.0" prefHeight="27.0" prefWidth="185.0" promptText="Email">
+      <TextField fx:id="txtEmail" focusTraversable="false" layoutX="332.0" layoutY="211.0" prefHeight="27.0" prefWidth="185.0" promptText="Email">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField focusTraversable="false" layoutX="331.0" layoutY="254.0" prefHeight="27.0" prefWidth="185.0" promptText="Password">
+      <TextField fx:id="txtPassword" focusTraversable="false" layoutX="331.0" layoutY="254.0" prefHeight="27.0" prefWidth="185.0" promptText="Password">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Button layoutX="332.0" layoutY="319.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Login" textFill="WHITE" />
+      <Button fx:id="loginBtn" layoutX="332.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToOnlineMode" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Login" textFill="WHITE" />
+      <StackPane layoutX="48.0" layoutY="37.0">
+         <children>
+            <ImageView fx:id="backBtn" fitHeight="60.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/backBtn@2x.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
+         </children>
+      </StackPane>
     </children>
 </AnchorPane>
