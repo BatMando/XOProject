@@ -5,6 +5,7 @@
  */
 package controller;
 
+import Helper.NavigationController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -29,7 +30,7 @@ public class FXMLOnlineModeController implements Initializable {
     @FXML
     private ImageView backBtn;
     @FXML
-    private Button btnBack;
+    private Button logoutBtn;
 
     /**
      * Initializes the controller class.
@@ -52,7 +53,9 @@ public class FXMLOnlineModeController implements Initializable {
     }
 
     @FXML
-    private void backToMainPage(ActionEvent event) {
+    private void Logout(ActionEvent event) {
+        NavigationController btnback = new NavigationController("/view/FXMLLogin.fxml");
+        btnback.navigateTo(event);
     }
     
 }

@@ -8,6 +8,9 @@ package controller;
 import Helper.NavigationController;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,6 +55,30 @@ public class FXMLRegisterController implements Initializable {
 
     @FXML
     private void goToOnlineMode(ActionEvent event) {
+        
+        
+        String userName = txtUsername.getText().trim();
+        String email = txtEmail.getText().trim();
+        String password = txtPassword.getText().trim();
+        
+        //check if there's empty data
+        if(userName.isEmpty() || email.isEmpty() || password.isEmpty()){
+                System.out.println("there is missing data!");
+        }
+        else{
+            //check for email validation
+            String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(txtEmail.getText());
+            if(!matcher.matches()){
+                System.out.println("Enter a valid email!");
+            }
+            else{
+                System.out.println(userName+" - "+email+" - "+password);
+            }
+        }
+        
+        
     }
     
 }

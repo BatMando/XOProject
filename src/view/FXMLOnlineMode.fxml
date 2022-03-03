@@ -131,10 +131,10 @@
          <children>
             <ImageView fx:id="backBtn" fitHeight="60.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/backBtn@2x.png" />
+                  <Image url="@../resources/logoutBtn@2x.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#Logout" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
          </children>
       </StackPane>
       <HBox layoutX="649.0" layoutY="35.0" prefHeight="52.0" prefWidth="168.0">
