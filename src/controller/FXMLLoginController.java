@@ -76,15 +76,15 @@ public class FXMLLoginController implements Initializable {
         Matcher matcher = pattern.matcher(txtEmail.getText());
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText().trim();
-        if(email.isEmpty() || password.isEmpty() ){
-            Platform.runLater(()->{
-              txtAlret.setText("Empty Fields is Required");
-             });
-        }else if(!matcher.matches()){
-            Platform.runLater(()->{
-              txtAlret.setText("Please enter a valid email");
-             }); 
-        }else{
+//        if(email.isEmpty() || password.isEmpty() ){
+//            Platform.runLater(()->{
+//              txtAlret.setText("Empty Fields is Required");
+//             });
+//        }else if(!matcher.matches()){
+//            Platform.runLater(()->{
+//              txtAlret.setText("Please enter a valid email");
+//             }); 
+//        }else{
             txtAlret.setText("");
             FXMLHomeScreenController.ps.println("SignIn###"+txtEmail.getText()+"###"+txtPassword.getText());
             thread =  new Thread(){ 
@@ -174,7 +174,7 @@ public class FXMLLoginController implements Initializable {
                 }
             }};   
             thread.start();
-        }
+        //}
     }
 
     @FXML
