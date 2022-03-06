@@ -12,6 +12,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.prefs.Preferences;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,8 +33,9 @@ public class FXMLHomeScreenController implements Initializable {
     static Socket socket;
     static DataInputStream dis;
     static PrintStream ps;
-    Preferences prefs ;
+    Preferences prefs;
     int checkname;
+    static HashMap<String, String>hash = new HashMap<>();
     @FXML
     private Button singleModeBtn;
     @FXML
