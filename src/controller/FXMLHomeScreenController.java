@@ -97,27 +97,25 @@ public class FXMLHomeScreenController implements Initializable {
     @FXML
       public void changeSceneToOnlineGame(ActionEvent event) {
         System.out.println("changeSceneToOnlineGame: called");
-        NavigationController navigateToLoginOrRegister = new NavigationController("/view/FXMLLogin.fxml");
-        navigateToLoginOrRegister.navigateTo(event);
-        //CustomDialog cd = new CustomDialog();
-       // Boolean isCancled = cd.displayDialog("Enter Server IP");
-        // System.out.println("you entered ip ="+cd.getName());
+        CustomDialog cd = new CustomDialog();
+        Boolean isCancled = cd.displayDialog("Enter Server IP");
+        System.out.println("you entered ip ="+cd.getName());
          
 
-       // if(!isCancled){   
-       // boolean conn= connection(cd.getName());
+        if(!isCancled){   
+        boolean conn= connection(cd.getName());
         
-       // if(conn){ 
-       //  checkip=true;
-        // NavigationController navigateToLoginOrRegister = new NavigationController("/view/FXMLLogin.fxml");
-       //  System.out.println("socket is "+socket.isConnected()+" from main controller");
-       //  navigateToLoginOrRegister.navigateTo(event);
-       // }else 
-       // {AskDialog dialog=new AskDialog();
-       //  dialog.inValidIp("you entered an InValid IP, Please try Again");
-       // }
+        if(conn){ 
+         checkip=true;
+         NavigationController navigateToLoginOrRegister = new NavigationController("/view/FXMLLogin.fxml");
+         System.out.println("socket is "+socket.isConnected()+" from main controller");
+         navigateToLoginOrRegister.navigateTo(event);
+        }else 
+        {AskDialog dialog=new AskDialog();
+         dialog.inValidIp("you entered an InValid IP, Please try Again");
+        }
 
-       // }
+        }
                                 
     }
 
