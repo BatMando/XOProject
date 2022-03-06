@@ -68,6 +68,21 @@ public class AskDialog {
         alert.showAndWait();
         
     }
+    
+    public void serverIssueAlert(String message){  
+        ButtonType yes = new ButtonType("Yes"); 
+        Alert a = new Alert(Alert.AlertType.NONE); 
+        a.setTitle("Alert Issue");
+        a.getDialogPane().getButtonTypes().add(yes);
+        a.setHeaderText(message);
+//
+//         //a.setContentText(s);
+//        DialogPane dialogPane = a.getDialogPane();
+//        dialogPane.getStylesheets().add(
+//        getClass().getResource("/css/fullpackstyling.css").toExternalForm());
+//        dialogPane.getStyleClass().add("infoDialog");
 
+        a.showAndWait();    
+    }
 
 }
