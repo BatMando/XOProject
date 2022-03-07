@@ -77,7 +77,7 @@ public class FXMLOnlineModeController implements Initializable {
            if(logedOut){
                System.out.println("Send to server to logout");
                FXMLHomeScreenController.ps.println("logout###"+FXMLHomeScreenController.hash.get("email"));
-               thread.stop();
+               
                try {
                    FXMLHomeScreenController.socket.close();
                    FXMLHomeScreenController.dis.close();
@@ -85,7 +85,6 @@ public class FXMLOnlineModeController implements Initializable {
                } catch (IOException ex) {
                    Logger.getLogger(FXMLOnlineModeController.class.getName()).log(Level.SEVERE, null, ex);
                }
-//               ButtonBack btnback = new ButtonBack("/view/LoginOrRegister.fxml");
                NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
                btnback.navigateTo(event);
            }

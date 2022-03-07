@@ -14,13 +14,18 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -30,6 +35,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -83,14 +89,20 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                     popUpRefuse();
                                     break;
                                 case "gameOn":
-                                    startGame();
+                                    Platform.runLater(()->{
+                                    try {
+                                      startGame();
+                                    } catch (IOException ex) {
+                                       Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                                    } 
+                                     }); 
                                     break;
                                 default :
                                     System.out.println("default");
                                     readOnlineList(data);
                             }
-                        } catch (IOException ex) {
-                            close();
+                        } catch (IOException ex) {                                                     
+                            close();                        
                         }
                     }while(true);
                     listOnlinePlayers();
@@ -105,8 +117,25 @@ public class FXMLFindPlayersScreenController implements Initializable {
         });
         thread.start();
     }    
-    public void startGame(){
+    public void startGame() throws IOException {
+        
         System.out.println("game starteddddd");
+        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLOnlineMode.fxml"));
+        Scene SceneMenu = new Scene(menu_parent);
+        Stage stage = (Stage)back.getParent().getScene().getWindow();
+        stage.setScene(SceneMenu);
+        stage.show();
+    }
+    
+    
+    public void gotoHell() throws IOException {
+        
+        System.out.println("back to Hell");
+        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
+        Scene SceneMenu = new Scene(menu_parent);
+        Stage stage = (Stage)back.getParent().getScene().getWindow();
+        stage.setScene(SceneMenu);
+        stage.show();
     }
 
     @FXML
@@ -153,12 +182,9 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 alert.getDialogPane().getButtonTypes().addAll(Yes);
                                
                                 DialogPane dialogPane = alert.getDialogPane();
-//                                dialogPane.getStylesheets().add(
-//                                getClass().getResource("/css/fullpackstyling.css").toExternalForm());
-//                                dialogPane.getStyleClass().add("infoDialog");
 
                                 // hide popup after 3 seconds:
-                                PauseTransition delay = new PauseTransition(Duration.seconds(15));
+                                PauseTransition delay = new PauseTransition(Duration.seconds(10));
                                 delay.setOnFinished(e -> alert.hide());
 
                                 alert.show();
@@ -195,10 +221,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                 alert.getDialogPane().getButtonTypes().addAll(Yes,No);
                 
                 DialogPane dialogPane = alert.getDialogPane();
-//                dialogPane.getStylesheets().add(
-//                getClass().getResource("/css/fullpackstyling.css").toExternalForm());
-//                dialogPane.getStyleClass().add("infoDialog");
-                
+
                 PauseTransition delay = new PauseTransition(Duration.seconds(10));
                 delay.setOnFinished(e -> alert.hide());
                                         
@@ -208,7 +231,15 @@ public class FXMLFindPlayersScreenController implements Initializable {
                     FXMLHomeScreenController.ps.println("accept###"+FXMLHomeScreenController.hash.get("email")+"###"+FXMLHomeScreenController.hash.get("username")+"###"+opponentMail);
                     // initialize game
                     System.out.println("navigate to game screen");
-                    //showGame(false,opponentUsername);
+                     Platform.runLater(()->{
+                    try {
+                        // to do
+                        startGame();
+                    } catch (IOException ex) {
+                        Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                     }); 
+                    
                 }else {
                     System.out.println("no first request");
                     FXMLHomeScreenController.ps.println("decline###"+opponentMail);
@@ -248,9 +279,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                 alert.setHeaderText("Your Opponent Refused to Challenge you!");
                 alert.getDialogPane().getButtonTypes().addAll(Yes);
                 DialogPane dialogPane = alert.getDialogPane();
-//                dialogPane.getStylesheets().add(
-//                getClass().getResource("/css/fullpackstyling.css").toExternalForm());
-//                dialogPane.getStyleClass().add("infoDialog");
+
                 alert.showAndWait();
             }
         });
@@ -262,10 +291,11 @@ public class FXMLFindPlayersScreenController implements Initializable {
         Platform.runLater(() -> {
         AskDialog  serverIssueAlert  = new AskDialog();
         serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
-//         NavigationController navigateToListPage = new NavigationController("/view/FXMLOnlineMode.fxml");
-//         navigateToListPage.navigateTo(event);
-//        ButtonBack backtoLoginPage = new ButtonBack("/view/sample.fxml");
-//        backtoLoginPage.navigateToAnotherPage(emailtxt);
+            try {
+                gotoHell();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         thread.stop();
     }

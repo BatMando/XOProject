@@ -19,12 +19,16 @@ import java.util.regex.Pattern;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -152,8 +156,10 @@ public class FXMLLoginController implements Initializable {
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    txtAlret.setText(receivedState);
+                                    txtAlret.setText("Connection issue, please try again later");
+                                   
                                 }
+                                
                             });
                             break;
                         default :
@@ -167,9 +173,7 @@ public class FXMLLoginController implements Initializable {
                 }catch (IOException ex) {
                     Platform.runLater(() -> {
                         try {
-                            AskDialog  serverIssueAlert  = new AskDialog();
-                            serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
-                            thread.stop();
+                            close();                            
                             FXMLHomeScreenController.socket.close();
                             FXMLHomeScreenController.dis.close();
                             FXMLHomeScreenController.ps.close();
@@ -183,6 +187,30 @@ public class FXMLLoginController implements Initializable {
             }};   
             thread.start();
         }
+    }
+    
+    
+     private void close(){
+        System.out.println("Server Colsed");
+                            
+        AskDialog  serverIssueAlert  = new AskDialog();
+        serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
+        try {
+            gotoHell();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+     
+      public void gotoHell() throws IOException {
+        
+        System.out.println("back to Hell");
+        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
+        Scene SceneMenu = new Scene(menu_parent);
+        Stage stage = (Stage)loginBtn.getParent().getScene().getWindow();
+        stage.setScene(SceneMenu);
+        stage.show();
     }
 
     @FXML
