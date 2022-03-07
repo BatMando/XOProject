@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -37,8 +38,7 @@ public class FXMLLoginController implements Initializable {
     private Button btnBack;
     @FXML
     private TextField txtEmail;
-    @FXML
-    private TextField txtPassword;
+    
     @FXML
     private Button loginBtn;
     @FXML
@@ -48,6 +48,8 @@ public class FXMLLoginController implements Initializable {
     StringTokenizer token;
     @FXML
     private Label txtAlret;
+    @FXML
+    private PasswordField txtPassword;
     
     /**
      * Initializes the controller class.
