@@ -7,6 +7,7 @@ package controller;
 
 import Helper.AskDialog;
 import Helper.NavigationController;
+import static controller.FXMLHomeScreenController.socket;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -61,7 +62,15 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void backToMainPage(ActionEvent event) {
-        NavigationController btnback = new NavigationController("/view/FXMLLogin.fxml");
+         try {
+                System.out.println("Home screen");
+                FXMLHomeScreenController.socket.close();
+                FXMLHomeScreenController.dis.close();
+                FXMLHomeScreenController.ps.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
         btnback.navigateTo(event);
     }
 
@@ -100,7 +109,6 @@ public class FXMLLoginController implements Initializable {
                     System.out.println("sign in page "+receivedState);
                     switch(receivedState){
                         case "Logged in successfully":
-//                                    score = Integer.parseInt(token.nextToken());
                             playerData = FXMLHomeScreenController.dis.readLine();
                             System.out.println("player data "+playerData);
 
@@ -108,7 +116,12 @@ public class FXMLLoginController implements Initializable {
                             FXMLHomeScreenController.hash.put("email", token2.nextToken());
                             FXMLHomeScreenController.hash.put("password",token2.nextToken());
                             FXMLHomeScreenController.hash.put("score", token2.nextToken());
-                            goToOnlineMode(event);
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                  goToOnlineMode(event);
+                                }
+                            });   
                             break;
                         case "This Email is alreay sign-in":
                             System.out.println("already sign in before run later");
@@ -117,10 +130,7 @@ public class FXMLLoginController implements Initializable {
                                 public void run() {
                                     txtAlret.setText(receivedState);
                                 }
-                            });
-//                                    Platform.runLater(()->{
-//                                       txtAlret.setText(receivedState);
-//                                      });                                
+                            });                                                              
                             break;
                         case "Email is incorrect":
                             Platform.runLater(new Runnable() {

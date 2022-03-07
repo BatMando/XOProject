@@ -23,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -57,19 +56,12 @@ public class FXMLRegisterController implements Initializable {
     }    
 
     @FXML
-    private void backToMainPage(ActionEvent event) {
-        NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
-        btnback.navigateTo(event);
-    }
-
-    private void goToLogin(ActionEvent event) {
-        NavigationController onlineModeBtn = new NavigationController("/view/FXMLLogin.fxml");
+    private void backToLoginPage(ActionEvent event) {
+       NavigationController onlineModeBtn = new NavigationController("/view/FXMLLogin.fxml");
         onlineModeBtn.navigateTo(event);
     }
 
-    @FXML
-    private void showErrorMsg(MouseEvent event) {
-    }
+   
 
     @FXML
     private void registerBtnPressed(ActionEvent event) {
@@ -83,7 +75,7 @@ public class FXMLRegisterController implements Initializable {
                 System.out.println("there is missing data!");
                 errorLabel.setText("Enter all required fields");
         }
-        else if(userName.length()>10||email.length()>25||password.length()>10){
+        else if(userName.length()>10||email.length()>25||password.length()>10||password.length()<4){
             System.out.println("some data is too large!");
             errorLabel.setText("Enter a valid data");
         }
@@ -128,7 +120,7 @@ public class FXMLRegisterController implements Initializable {
                                     Platform.runLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            goToLogin(event);
+                                            backToLoginPage(event);
                                         }
                                     });
                                     
