@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,8 +34,7 @@ public class FXMLRegisterController implements Initializable {
 
     @FXML
     private TextField txtEmail;
-    @FXML
-    private TextField txtPassword;
+    
     @FXML
     private TextField txtUsername;
     @FXML
@@ -48,6 +48,8 @@ public class FXMLRegisterController implements Initializable {
     StringTokenizer token;
     @FXML
     private Label errorLabel;
+    @FXML
+    private PasswordField txtPassword;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,7 +63,7 @@ public class FXMLRegisterController implements Initializable {
     }
 
     private void goToLogin(ActionEvent event) {
-        NavigationController onlineModeBtn = new NavigationController("/view/FXMLLoginController.fxml");
+        NavigationController onlineModeBtn = new NavigationController("/view/FXMLLogin.fxml");
         onlineModeBtn.navigateTo(event);
     }
 
