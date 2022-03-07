@@ -59,6 +59,11 @@
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
          </children>
       </StackPane>
+      <Label layoutX="452.0" layoutY="349.0" text="Register" textFill="#84d9ff">
+         <font>
+            <Font name="Poppins Regular" size="10.0" />
+         </font>
+      </Label>
       <Button fx:id="registerBtn" layoutX="443.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToRegisterScreen" opacity="0.0" prefHeight="23.0" prefWidth="47.0" text="Register" textAlignment="CENTER" textFill="#4b0886">
          <font>
             <Font name="System Bold" size="11.0" />
@@ -68,10 +73,5 @@
          <font>
             <Font size="12.0" />
          </font></Label>
-      <Label layoutX="447.0" layoutY="348.0" text="Register" textFill="#84d9ff">
-         <font>
-            <Font name="Poppins Regular" size="10.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>
