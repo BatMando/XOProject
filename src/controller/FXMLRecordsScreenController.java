@@ -61,7 +61,21 @@ public class FXMLRecordsScreenController implements Initializable {
        
         // TODO
     }    
-    
+    public static boolean checkIfFolderExist(String listType){
+        String dir="";
+        if(listType.equals("local-mode")){
+               dir = "savedLocalGame";
+        }else if (listType.equals("online-mode")){
+              dir = "savedOnlineGame";
+        }
+        
+        File folder = new File("record/"+dir);
+        System.out.println("record/"+dir);
+        if(folder.exists()){
+            return true;
+        }
+        return false;
+    }
     private void getFilesName (String listType){
         String dir="";
         if(listType.equals("local-mode")){
@@ -72,7 +86,7 @@ public class FXMLRecordsScreenController implements Initializable {
         
         File folder = new File("record/"+dir);
         System.out.println("record/"+dir);
-
+        
         File[] listOfFiles = folder.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {
@@ -81,7 +95,6 @@ public class FXMLRecordsScreenController implements Initializable {
              System.out.println(listOfFiles[i].getName());
             } 
          }
-        
         recordsListView.getItems().addAll(fileNames);
         recordScroll.setContent(recordsListView);
     }
