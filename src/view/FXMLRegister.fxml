@@ -41,7 +41,7 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Button fx:id="registerBtn" layoutX="332.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToOnlineMode" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Register" textFill="WHITE" />
+      <Button fx:id="registerBtn" layoutX="332.0" layoutY="356.0" mnemonicParsing="false" onAction="#registerBtnPressed" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Register" textFill="WHITE" />
       <TextField fx:id="txtUsername" focusTraversable="false" layoutX="331.0" layoutY="189.0" prefHeight="27.0" prefWidth="185.0" promptText="Username">
          <opaqueInsets>
             <Insets />
@@ -57,5 +57,10 @@
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToMainPage" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
          </children>
       </StackPane>
+      <Label fx:id="errorLabel" layoutX="331.0" layoutY="319.0" onDragDetected="#showErrorMsg" prefHeight="21.0" prefWidth="185.0" textFill="RED">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
