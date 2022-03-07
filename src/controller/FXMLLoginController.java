@@ -59,6 +59,14 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void backToMainPage(ActionEvent event) {
+        try {
+            System.out.println("Back to Home screen");
+            FXMLHomeScreenController.socket.close();
+            FXMLHomeScreenController.dis.close();
+            FXMLHomeScreenController.ps.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
         btnback.navigateTo(event);
     }
@@ -71,20 +79,20 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void loginBtnPressed(ActionEvent event) {
         
-        String regex = "/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/";
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(regex);     
         Matcher matcher = pattern.matcher(txtEmail.getText());
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText().trim();
-//        if(email.isEmpty() || password.isEmpty() ){
-//            Platform.runLater(()->{
-//              txtAlret.setText("Empty Fields is Required");
-//             });
-//        }else if(!matcher.matches()){
-//            Platform.runLater(()->{
-//              txtAlret.setText("Please enter a valid email");
-//             }); 
-//        }else{
+        if(email.isEmpty() || password.isEmpty()){
+            Platform.runLater(()->{
+              txtAlret.setText("Empty Fields is Required");
+             });
+        }else if(!matcher.matches()){
+            Platform.runLater(()->{
+              txtAlret.setText("Please enter a valid email");
+             }); 
+        }else{
             txtAlret.setText("");
             FXMLHomeScreenController.ps.println("SignIn###"+txtEmail.getText()+"###"+txtPassword.getText());
             thread =  new Thread(){ 
@@ -126,10 +134,7 @@ public class FXMLLoginController implements Initializable {
                                 public void run() {
                                     txtAlret.setText(receivedState);
                                 }
-                            });
-//                                    Platform.runLater(()->{
-//                                       txtAlret.setText(receivedState);
-//                                      });                                
+                            });                              
                             break;
                         case "Password is incorrect":
                             Platform.runLater(new Runnable() {
@@ -174,7 +179,7 @@ public class FXMLLoginController implements Initializable {
                 }
             }};   
             thread.start();
-        //}
+        }
     }
 
     @FXML
