@@ -51,6 +51,26 @@ public class NavigationController {
 
 
     }
+//     public void navigateTo(){
+//         //get scene
+//        Parent buttonParent;
+//        try {
+//         buttonParent = FXMLLoader.load(getClass().getResource(source));
+//             //generate new scene
+//        Scene buttonScene = new Scene(buttonParent);
+//
+//        //get stage information
+//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+//
+//        window.setTitle("Home");
+//        window.setScene(buttonScene);
+//        window.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(NavigationController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//
+//    }
 
 
 
@@ -61,7 +81,7 @@ public class NavigationController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(source));
             Parent root = (Parent)fxmlLoader.load();   
-           FXMLRecordsScreenController controller = fxmlLoader.<FXMLRecordsScreenController>getController();
+            FXMLRecordsScreenController controller = fxmlLoader.<FXMLRecordsScreenController>getController();
            controller.setType(listType);
 
             Scene buttonScene = new Scene(root);

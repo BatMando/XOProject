@@ -89,9 +89,14 @@ public class FXMLRecordsScreenController implements Initializable {
     
     @FXML
     private void backToMainPage(ActionEvent event) {
-        System.out.println("backToMainPage: called");
-        NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
-        btnback.navigateTo(event);
+        if(listType.equals("local-mode")){
+            NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
+            btnback.navigateTo(event);
+            System.out.println("backToMainPage: called");
+        }else if (listType.equals("online-mode")){
+            NavigationController navigateToListPage = new NavigationController("/view/FXMLOnlineMode.fxml");
+            navigateToListPage.navigateTo(event); 
+        }
     }
     
     public void  setType(String  stringListType){ 
@@ -106,7 +111,7 @@ public class FXMLRecordsScreenController implements Initializable {
     
     public void changeSceneToWatchGame(MouseEvent event) {
         
-        System.out.println("changeSceneToWatchGame: called");
+        //System.out.println("changeSceneToWatchGame: called");
         System.out.println(listType);
         if(listType.equals("local-mode")){
         NavigationController navigateToListPage = new NavigationController("/view/FXMLWatchGameScreen.fxml");
