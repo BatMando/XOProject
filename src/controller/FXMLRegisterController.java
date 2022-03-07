@@ -5,6 +5,7 @@
  */
 package controller;
 
+import Helper.AskDialog;
 import Helper.NavigationController;
 import java.io.IOException;
 import java.net.URL;
@@ -17,12 +18,16 @@ import java.util.regex.Pattern;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -127,16 +132,17 @@ public class FXMLRegisterController implements Initializable {
                                     break;
                             }
                         } catch (IOException ex) {
-                            Logger.getLogger(FXMLRegisterController.class.getName()).log(Level.SEVERE, null, ex);
-                            
+                            Platform.runLater(() -> {
                             try {
-                                this.stop();
+                                close();                            
                                 FXMLHomeScreenController.socket.close();
                                 FXMLHomeScreenController.dis.close();
                                 FXMLHomeScreenController.ps.close();
                             } catch (IOException ex1) {
-                                Logger.getLogger(FXMLRegisterController.class.getName()).log(Level.SEVERE, null, ex1);
+                                Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex1);
                             }
+
+                            });
                             
                         }
                     }
@@ -148,6 +154,28 @@ public class FXMLRegisterController implements Initializable {
             
         }
         
+    }
+    private void close(){
+        System.out.println("Server Colsed");
+                            
+        AskDialog  serverIssueAlert  = new AskDialog();
+        serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
+        try {
+            gotoHell();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+     
+      public void gotoHell() throws IOException {
+        
+        System.out.println("back to Hell");
+        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
+        Scene SceneMenu = new Scene(menu_parent);
+        Stage stage = (Stage)registerBtn.getParent().getScene().getWindow();
+        stage.setScene(SceneMenu);
+        stage.show();
     }
     
 }
