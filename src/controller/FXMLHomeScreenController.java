@@ -98,9 +98,10 @@ public class FXMLHomeScreenController implements Initializable {
     }
     @FXML
     public void navigateToRecordedGamesScreen(ActionEvent event) {
-        NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
-        navigateToRecordedGames.navigateToRecordList(event,"local-mode");
-
+        if(FXMLRecordsScreenController.checkIfFolderExist("local-mode")){
+            NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
+            navigateToRecordedGames.navigateToRecordList(event,"local-mode");
+        }
     }
     
     @FXML

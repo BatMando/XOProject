@@ -62,8 +62,10 @@ public class FXMLOnlineModeController implements Initializable {
 
     @FXML
     private void navigateToRecordedGamesScreen(ActionEvent event) {
-        NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
-        navigateToRecordedGames.navigateToRecordList(event,"online-mode");
+        if(FXMLRecordsScreenController.checkIfFolderExist("online-mode")){
+            NavigationController navigateToRecordedGames = new NavigationController("/view/FXMLRecordsScreen.fxml");
+            navigateToRecordedGames.navigateToRecordList(event,"online-mode");
+        }
     }
 
  
