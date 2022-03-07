@@ -113,8 +113,8 @@ public class FXMLLoginController implements Initializable {
                             System.out.println("player data "+playerData);
 
                             StringTokenizer token2 = new StringTokenizer(playerData,"###");
-                            FXMLHomeScreenController.hash.put("email", token2.nextToken());
-                            FXMLHomeScreenController.hash.put("password",token2.nextToken());
+                            FXMLHomeScreenController.hash.put("username", token2.nextToken());
+                            FXMLHomeScreenController.hash.put("email",token2.nextToken());
                             FXMLHomeScreenController.hash.put("score", token2.nextToken());
                             Platform.runLater(new Runnable() {
                                 @Override
@@ -169,7 +169,6 @@ public class FXMLLoginController implements Initializable {
                         try {
                             AskDialog  serverIssueAlert  = new AskDialog();
                             serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
-                
                             thread.stop();
                             FXMLHomeScreenController.socket.close();
                             FXMLHomeScreenController.dis.close();

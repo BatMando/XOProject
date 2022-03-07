@@ -137,16 +137,16 @@
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#Logout" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
          </children>
       </StackPane>
-      <HBox layoutX="649.0" layoutY="35.0" prefHeight="52.0" prefWidth="168.0">
+      <HBox layoutX="649.0" layoutY="35.0" prefHeight="52.0" prefWidth="168.0" spacing="8.0">
          <children>
-            <ImageView fitHeight="52.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/scorePointsImg@2x.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="12345" textAlignment="CENTER" wrappingWidth="110.6708984375">
+            <Text fx:id="scoreLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="12345" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="Poppins Regular" size="24.0" />
                </font>
                <HBox.margin>
                   <Insets top="5.0" />

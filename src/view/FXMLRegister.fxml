@@ -29,20 +29,32 @@
       </ImageView>
       <Label layoutX="343.0" layoutY="97.0" prefHeight="50.0" prefWidth="165.0" text="Register" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="38.0" />
+            <Font name="Raleway Bold" size="38.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmail" focusTraversable="false" layoutX="331.0" layoutY="236.0" prefHeight="27.0" prefWidth="185.0" promptText="Email">
+      <TextField fx:id="txtEmail" focusTraversable="false" layoutX="331.0" layoutY="227.0" prefHeight="27.0" prefWidth="185.0" promptText="Email" style="-fx-background-radius: 20;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <font>
+            <Font name="Raleway" size="13.0" />
+         </font>
       </TextField>
-      <PasswordField fx:id="txtPassword" focusTraversable="false" layoutX="330.0" layoutY="284.0" promptText="Password" />
-      <Button fx:id="registerBtn" layoutX="332.0" layoutY="356.0" mnemonicParsing="false" onAction="#registerBtnPressed" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388;" text="Register" textFill="WHITE" />
-      <TextField fx:id="txtUsername" focusTraversable="false" layoutX="331.0" layoutY="189.0" prefHeight="27.0" prefWidth="185.0" promptText="Username">
+      <PasswordField fx:id="txtPassword" focusTraversable="false" layoutX="332.0" layoutY="266.0" prefHeight="27.0" prefWidth="183.0" promptText="Password" style="-fx-background-radius: 20;">
+         <font>
+            <Font name="Raleway" size="13.0" />
+         </font></PasswordField>
+      <Button fx:id="registerBtn" layoutX="332.0" layoutY="356.0" mnemonicParsing="false" onAction="#registerBtnPressed" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #4C3388; -fx-background-radius: 20;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="Raleway" size="13.0" />
+         </font></Button>
+      <TextField fx:id="txtUsername" focusTraversable="false" layoutX="331.0" layoutY="189.0" prefHeight="27.0" prefWidth="185.0" promptText="Username" style="-fx-background-radius: 20;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <font>
+            <Font name="Raleway" size="13.0" />
+         </font>
       </TextField>
       <StackPane layoutX="38.0" layoutY="27.0">
          <children>
@@ -56,7 +68,7 @@
       </StackPane>
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="331.0" layoutY="319.0" prefHeight="21.0" prefWidth="185.0" textFill="RED">
          <font>
-            <Font size="13.0" />
+            <Font name="Raleway" size="13.0" />
          </font>
       </Label>
    </children>
