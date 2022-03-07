@@ -6,8 +6,12 @@
 package controller;
 
 import Helper.NavigationController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.application.Platform;
@@ -15,8 +19,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -37,15 +43,16 @@ public class FXMLRegisterController implements Initializable {
     private Button btnBack;
     @FXML
     private Button registerBtn;
-
-    /**
-     * Initializes the controller class.
-     */
+    
+    private Thread thread;
+    StringTokenizer token;
+    @FXML
+    private Label errorLabel;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
 
     @FXML
     private void backToMainPage(ActionEvent event) {
@@ -53,9 +60,17 @@ public class FXMLRegisterController implements Initializable {
         btnback.navigateTo(event);
     }
 
+    private void goToLogin(ActionEvent event) {
+        NavigationController onlineModeBtn = new NavigationController("/view/FXMLLoginController.fxml");
+        onlineModeBtn.navigateTo(event);
+    }
+
     @FXML
-    private void goToOnlineMode(ActionEvent event) {
-        
+    private void showErrorMsg(MouseEvent event) {
+    }
+
+    @FXML
+    private void registerBtnPressed(ActionEvent event) {
         
         String userName = txtUsername.getText().trim();
         String email = txtEmail.getText().trim();
@@ -64,6 +79,9 @@ public class FXMLRegisterController implements Initializable {
         //check if there's empty data
         if(userName.isEmpty() || email.isEmpty() || password.isEmpty()){
                 System.out.println("there is missing data!");
+        }
+        else if(userName.length()>50||email.length()>50||password.length()>25){
+            System.out.println("some data is too large!");
         }
         else{
             //check for email validation
@@ -75,9 +93,57 @@ public class FXMLRegisterController implements Initializable {
             }
             else{
                 System.out.println(userName+" - "+email+" - "+password);
+                
+                FXMLHomeScreenController.ps.println("SignUp###"+txtUsername.getText()+"###"+txtEmail.getText()+"###"+txtPassword.getText());
+                
+                thread = new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            String respond = FXMLHomeScreenController.dis.readLine();
+                            token = new StringTokenizer(respond,"###");
+                            String msg = token.nextToken();
+                            
+                            System.out.println(msg);
+                            
+                            switch(msg){
+                                case "already signed-up":
+                                    System.out.println(msg);
+                                    Platform.runLater(()->{
+                                       errorLabel.setText("This Email is "+msg);
+                                    });
+                                    break;
+                                case "Registered Successfully":
+                                    String playerData = FXMLHomeScreenController.dis.readLine();
+                                    System.out.println(playerData);
+                                    StringTokenizer dataToken = new StringTokenizer(playerData,"###");
+                                    FXMLHomeScreenController.hash.put("username", dataToken.nextToken());
+                                    FXMLHomeScreenController.hash.put("email", dataToken.nextToken());
+                                    FXMLHomeScreenController.hash.put("score","0");
+                                    goToLogin(event);
+                                    break;
+                            }
+                        } catch (IOException ex) {
+                            Logger.getLogger(FXMLRegisterController.class.getName()).log(Level.SEVERE, null, ex);
+                            
+                            try {
+                                this.stop();
+                                FXMLHomeScreenController.socket.close();
+                                FXMLHomeScreenController.dis.close();
+                                FXMLHomeScreenController.ps.close();
+                            } catch (IOException ex1) {
+                                Logger.getLogger(FXMLRegisterController.class.getName()).log(Level.SEVERE, null, ex1);
+                            }
+                            
+                        }
+                    }
+                    
+                };
+                thread.start();
+
             }
+            
         }
-        
         
     }
     
