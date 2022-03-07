@@ -47,7 +47,16 @@ public class FXMLHomeScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         prefs = Preferences.userNodeForPackage(FXMLHomeScreenController.class);
-
+        if(socket !=null){
+            try {
+                System.out.println("Home screen");
+                socket.close();
+                dis.close();
+                ps.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }    
 
     @FXML
