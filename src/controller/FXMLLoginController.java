@@ -59,14 +59,6 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void backToMainPage(ActionEvent event) {
-        try {
-            System.out.println("Back to Home screen");
-            FXMLHomeScreenController.socket.close();
-            FXMLHomeScreenController.dis.close();
-            FXMLHomeScreenController.ps.close();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
         NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
         btnback.navigateTo(event);
     }
