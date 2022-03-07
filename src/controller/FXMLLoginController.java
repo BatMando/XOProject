@@ -61,7 +61,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void backToMainPage(ActionEvent event) {
-        NavigationController btnback = new NavigationController("/view/FXMLHome.fxml");
+        NavigationController btnback = new NavigationController("/view/FXMLLogin.fxml");
         btnback.navigateTo(event);
     }
 

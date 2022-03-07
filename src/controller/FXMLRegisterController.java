@@ -81,9 +81,11 @@ public class FXMLRegisterController implements Initializable {
         //check if there's empty data
         if(userName.isEmpty() || email.isEmpty() || password.isEmpty()){
                 System.out.println("there is missing data!");
+                errorLabel.setText("Enter all required fields");
         }
-        else if(userName.length()>50||email.length()>50||password.length()>25){
+        else if(userName.length()>10||email.length()>25||password.length()>10){
             System.out.println("some data is too large!");
+            errorLabel.setText("Enter a valid data");
         }
         else{
             //check for email validation
@@ -92,6 +94,7 @@ public class FXMLRegisterController implements Initializable {
             Matcher matcher = pattern.matcher(txtEmail.getText());
             if(!matcher.matches()){
                 System.out.println("Enter a valid email!");
+                errorLabel.setText("Enter a valid email!");
             }
             else{
                 System.out.println(userName+" - "+email+" - "+password);
@@ -122,7 +125,13 @@ public class FXMLRegisterController implements Initializable {
                                     FXMLHomeScreenController.hash.put("username", dataToken.nextToken());
                                     FXMLHomeScreenController.hash.put("email", dataToken.nextToken());
                                     FXMLHomeScreenController.hash.put("score","0");
-                                    goToLogin(event);
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            goToLogin(event);
+                                        }
+                                    });
+                                    
                                     break;
                             }
                         } catch (IOException ex) {
