@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -58,12 +59,16 @@ public class FXMLFindPlayersScreenController implements Initializable {
     private StringTokenizer token;
     public static int opponentScore;
     public static String opponentUsername ;
+    public static boolean state;
+    Preferences prefs;
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        prefs = Preferences.userNodeForPackage(FXMLOnlineModeController.class); 
         loaded = true;
         FXMLHomeScreenController.ps.println("playerlist");
         onlinePlayers = new ArrayList();  
@@ -96,9 +101,12 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                        Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
                                     } 
                                      }); 
+                                    thread.stop();
+//                                    Stage stage = (Stage)back.getParent().getScene().getWindow();
+//                                    stage.close();
                                     break;
                                 default :
-                                    System.out.println("default");
+                                    System.out.println("default"+ data);
                                     readOnlineList(data);
                             }
                         } catch (IOException ex) {                                                     
@@ -122,7 +130,9 @@ public class FXMLFindPlayersScreenController implements Initializable {
         System.out.println("game starteddddd");
         Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLGamingOnline.fxml"));
         Scene SceneMenu = new Scene(menu_parent);
-        FXMLGamingOnlineController.state = startPlayer;
+        prefs.put("startPlayerState", startPlayer+"");
+        //state = startPlayer;
+        System.out.println("started game" + state);
         Stage stage = (Stage)back.getParent().getScene().getWindow();
         stage.setScene(SceneMenu);
         stage.show();
@@ -174,6 +184,9 @@ public class FXMLFindPlayersScreenController implements Initializable {
                         button.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent event) {
+                                opponentUsername = x.getUserName();
+                                opponentScore = x.getScore();
+                                System.out.println("btn clicked "+opponentUsername+" score is : "+opponentScore);
                                 FXMLHomeScreenController.ps.println("request###"+button.getId()+"###"+FXMLHomeScreenController.hash.get("email")+"###"+FXMLHomeScreenController.hash.get("username")+"###"+FXMLHomeScreenController.hash.get("score"));
                                 // pop up waiting for response from server 
                                 ButtonType Yes = new ButtonType("Ok"); // can use an Alert, Dialog, or PopupWindow as needed...
@@ -236,10 +249,14 @@ public class FXMLFindPlayersScreenController implements Initializable {
                     try {
                         // to do
                         startGame(false);
+                        thread.stop();
+//                        Stage stage = (Stage)back.getParent().getScene().getWindow();
+//                        stage.close();
                     } catch (IOException ex) {
                         Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
                     } 
                      }); 
+                     
                     
                 }else {
                     System.out.println("no first request");

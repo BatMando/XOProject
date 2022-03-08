@@ -7,6 +7,7 @@ package controller;
 
 import Helper.AskDialog;
 import Helper.Player;
+import static controller.FXMLFindPlayersScreenController.state;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -81,8 +83,6 @@ public class FXMLGamingOnlineController implements Initializable {
     private StringTokenizer token;
     private Alert alert;
     private Boolean loaded = false;
-    private Boolean rematch1 = false;
-    private Boolean rematch2 = false;
     private VBox vbox = new VBox();
     private HashMap<String, Button> btn;
     boolean myTurn,opponentTurn,gameState=false;
@@ -94,7 +94,7 @@ public class FXMLGamingOnlineController implements Initializable {
     private int currentScore;
     private int opponentScore;
     private ImageView view;
-    public static boolean state;
+    
     private Boolean display = false;
 
     
@@ -103,7 +103,8 @@ public class FXMLGamingOnlineController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        pref = Preferences.userNodeForPackage(FXMLGamingOnlineController.class); 
+        showGame();
         player1Label.setText(FXMLHomeScreenController.hash.get("username"));
         player1scoreLbl.setText(FXMLHomeScreenController.hash.get("score")); 
         player2Label.setText(FXMLFindPlayersScreenController.opponentUsername);
@@ -124,7 +125,7 @@ public class FXMLGamingOnlineController implements Initializable {
         btn.put("btn7", btn7);
         btn.put("btn8", btn8);
         btn.put("btn9", btn9);
-        showGame();
+        
         //onlinePlayers = new ArrayList();           
         thread = new Thread(new Runnable() {
             @Override
@@ -152,7 +153,7 @@ public class FXMLGamingOnlineController implements Initializable {
                                 case "close":
                                     close();
                                 default :
-                                    System.out.println("default");
+                                    System.out.println("default in gaming");
                             }
                         } catch (IOException ex) {
                             close();
@@ -254,6 +255,21 @@ public class FXMLGamingOnlineController implements Initializable {
     
     private void showGame(){
         makeGridEmpty();
+          try {
+            if(pref.nodeExists("/controller"))
+            {
+              System.out.println("init");
+              String myState=pref.get("startPlayerState","");
+              System.out.println(myState + " pref state");
+              if (myState.equals("true")){
+                state = true;
+              }
+              else 
+                  state = false;
+            }
+        } catch (BackingStoreException ex) {
+            Logger.getLogger(FXMLOneVSComputerModeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.out.println("my state: "+state);
         myTurn = state;
         opponentTurn = !state;
