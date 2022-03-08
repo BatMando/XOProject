@@ -54,10 +54,10 @@ public class FXMLFindPlayersScreenController implements Initializable {
     private Alert alert;
     Thread thread;
     private Boolean loaded = false;
-     private Player player;
+    private Player player;
     private StringTokenizer token;
-    private int opponentScore;
-     private String opponentUsername ;
+    public static int opponentScore;
+    public static String opponentUsername ;
     /**
      * Initializes the controller class.
      */
@@ -91,7 +91,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 case "gameOn":
                                     Platform.runLater(()->{
                                     try {
-                                      startGame();
+                                      startGame(true);
                                     } catch (IOException ex) {
                                        Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
                                     } 
@@ -117,11 +117,12 @@ public class FXMLFindPlayersScreenController implements Initializable {
         });
         thread.start();
     }    
-    public void startGame() throws IOException {
+    public void startGame(boolean startPlayer) throws IOException {
         
         System.out.println("game starteddddd");
-        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLOnlineMode.fxml"));
+        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLGamingOnline.fxml"));
         Scene SceneMenu = new Scene(menu_parent);
+        FXMLGamingOnlineController.state = startPlayer;
         Stage stage = (Stage)back.getParent().getScene().getWindow();
         stage.setScene(SceneMenu);
         stage.show();
@@ -234,7 +235,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                      Platform.runLater(()->{
                     try {
                         // to do
-                        startGame();
+                        startGame(false);
                     } catch (IOException ex) {
                         Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
                     } 
