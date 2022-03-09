@@ -85,7 +85,7 @@ public class FXMLGamingOnlineController implements Initializable {
     private Boolean loaded = false;
     private VBox vbox = new VBox();
     private HashMap<String, Button> btn;
-    boolean myTurn,opponentTurn,gameState=false;
+    public static boolean myTurn,opponentTurn,gameState=false;
     private String myTic,oppTic;
     private String opponentUsername ;
     private Preferences pref ;
@@ -103,16 +103,10 @@ public class FXMLGamingOnlineController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pref = Preferences.userNodeForPackage(FXMLGamingOnlineController.class); 
+       
         showGame();
-        player1Label.setText(FXMLHomeScreenController.hash.get("username"));
-        player1scoreLbl.setText(FXMLHomeScreenController.hash.get("score")); 
-        player2Label.setText(FXMLFindPlayersScreenController.opponentUsername);
-        player2scoreLbl.setText(FXMLFindPlayersScreenController.opponentScore+"");
-        //loaded = true;
-        //FXMLHomeScreenController.ps.println("playerlist");
         
-        //pref =Preferences.userNodeForPackage(OnlinePlayerController.class);
+       
         
         btn = new HashMap();
 
@@ -126,7 +120,6 @@ public class FXMLGamingOnlineController implements Initializable {
         btn.put("btn8", btn8);
         btn.put("btn9", btn9);
         
-        //onlinePlayers = new ArrayList();           
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -138,6 +131,7 @@ public class FXMLGamingOnlineController implements Initializable {
                             }
                             switch(data){
                                 case "gameTic":
+                                    System.out.println("recieve game tic"+FXMLHomeScreenController.dis.readLine());
                                     opponentTurn();
                                     break;
                                 case "finalgameTic":
@@ -154,6 +148,7 @@ public class FXMLGamingOnlineController implements Initializable {
                                     close();
                                 default :
                                     System.out.println("default in gaming");
+                                    System.out.println("**********"+data+"/////////////");
                             }
                         } catch (IOException ex) {
                             close();
@@ -211,7 +206,9 @@ public class FXMLGamingOnlineController implements Initializable {
                     FXMLHomeScreenController.ps.println("finishgameTic###"+FXMLHomeScreenController.hash.get("email")+"###"+buttonPressed.getId());
                 }else{
                     FXMLHomeScreenController.ps.println("gameTic###"+FXMLHomeScreenController.hash.get("email")+"###"+buttonPressed.getId());
+                     System.out.println("sending game tic");
                 }
+                
             }
         }
     }
@@ -255,31 +252,23 @@ public class FXMLGamingOnlineController implements Initializable {
     
     private void showGame(){
         makeGridEmpty();
-          try {
-            if(pref.nodeExists("/controller"))
-            {
-              System.out.println("init");
-              String myState=pref.get("startPlayerState","");
-              System.out.println(myState + " pref state");
-              if (myState.equals("true")){
-                state = true;
-              }
-              else 
-                  state = false;
-            }
-        } catch (BackingStoreException ex) {
-            Logger.getLogger(FXMLOneVSComputerModeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("my state: "+state);
-        myTurn = state;
-        opponentTurn = !state;
+        System.out.println("my state: "+myTurn);
+
         gameState = true;
-        if(state){
+        if(myTurn){
             myTic = "X";
             oppTic = "O";
+            player1Label.setText(FXMLHomeScreenController.hash.get("username"));
+            player1scoreLbl.setText(FXMLHomeScreenController.hash.get("score")); 
+            player2Label.setText(FXMLFindPlayersScreenController.opponentUsername);
+            player2scoreLbl.setText(FXMLFindPlayersScreenController.opponentScore+"");
         }else{
             myTic = "O";
             oppTic = "X";
+            player2Label.setText(FXMLHomeScreenController.hash.get("username"));
+            player2scoreLbl.setText(FXMLHomeScreenController.hash.get("score")); 
+            player1Label.setText(FXMLFindPlayersScreenController.opponentUsername);
+            player1scoreLbl.setText(FXMLFindPlayersScreenController.opponentScore+"");
         }
         System.out.println("my tic" +myTic);
     }
@@ -411,6 +400,7 @@ public class FXMLGamingOnlineController implements Initializable {
     
     private boolean checkState(){
         System.out.println("checking state");
+        /*
         checkColumns();
         checkRows();
         checkDiagonal();
@@ -446,7 +436,8 @@ public class FXMLGamingOnlineController implements Initializable {
             });
             reset();
             return true;
-        }
+        }*/
+        System.out.println("checking ended");
         return false;
     }
 

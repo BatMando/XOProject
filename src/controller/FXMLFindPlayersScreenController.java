@@ -68,7 +68,6 @@ public class FXMLFindPlayersScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        prefs = Preferences.userNodeForPackage(FXMLOnlineModeController.class); 
         loaded = true;
         FXMLHomeScreenController.ps.println("playerlist");
         onlinePlayers = new ArrayList();  
@@ -94,6 +93,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                     popUpRefuse();
                                     break;
                                 case "gameOn":
+                                   
                                     Platform.runLater(()->{
                                     try {
                                       startGame(true);
@@ -101,9 +101,8 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                        Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
                                     } 
                                      }); 
-                                    thread.stop();
-//                                    Stage stage = (Stage)back.getParent().getScene().getWindow();
-//                                    stage.close();
+                                     thread.stop();
+                                   
                                     break;
                                 default :
                                     System.out.println("default"+ data);
@@ -126,12 +125,11 @@ public class FXMLFindPlayersScreenController implements Initializable {
         thread.start();
     }    
     public void startGame(boolean startPlayer) throws IOException {
-        
+        FXMLGamingOnlineController.myTurn = startPlayer;
+        FXMLGamingOnlineController.opponentTurn = !startPlayer;
         System.out.println("game starteddddd");
         Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLGamingOnline.fxml"));
         Scene SceneMenu = new Scene(menu_parent);
-        prefs.put("startPlayerState", startPlayer+"");
-        //state = startPlayer;
         System.out.println("started game" + state);
         Stage stage = (Stage)back.getParent().getScene().getWindow();
         stage.setScene(SceneMenu);
@@ -247,11 +245,10 @@ public class FXMLFindPlayersScreenController implements Initializable {
                     System.out.println("navigate to game screen");
                      Platform.runLater(()->{
                     try {
-                        // to do
-                        startGame(false);
                         thread.stop();
-//                        Stage stage = (Stage)back.getParent().getScene().getWindow();
-//                        stage.close();
+                        startGame(false);
+                        
+
                     } catch (IOException ex) {
                         Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
                     } 
