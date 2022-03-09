@@ -6,6 +6,7 @@
 package controller;
 
 import Helper.AskDialog;
+import Helper.NavigationController;
 import Helper.Player;
 import static controller.FXMLFindPlayersScreenController.state;
 import java.io.IOException;
@@ -96,6 +97,8 @@ public class FXMLGamingOnlineController implements Initializable {
     private ImageView view;
     
     private Boolean display = false;
+    @FXML
+    private Text turnLabel;
 
     
     /**
@@ -105,11 +108,7 @@ public class FXMLGamingOnlineController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        
         showGame();
-        
-       
-        
         btn = new HashMap();
-
         btn.put("btn1", btn1);
         btn.put("btn2", btn2);
         btn.put("btn3", btn3);
@@ -119,19 +118,20 @@ public class FXMLGamingOnlineController implements Initializable {
         btn.put("btn7", btn7);
         btn.put("btn8", btn8);
         btn.put("btn9", btn9);
-        
+        //FXMLHomeScreenController.ps.println("gameTic");
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){
-                        try{
+                    do {                        
+                         try{
                             String data = FXMLHomeScreenController.dis.readLine();
                             if(data.equals("null")){
                                 break;
                             }
                             switch(data){
                                 case "gameTic":
-                                    System.out.println("recieve game tic"+FXMLHomeScreenController.dis.readLine());
+                                    //System.out.println("recieve game tic "+FXMLHomeScreenController.dis.readLine());
                                     opponentTurn();
                                     break;
                                 case "finalgameTic":
@@ -153,7 +153,7 @@ public class FXMLGamingOnlineController implements Initializable {
                         } catch (IOException ex) {
                             close();
                         }
-                    
+                    } while(true);
                     try{
                            Thread.sleep(300);
                         }catch(InterruptedException ex){
@@ -195,10 +195,12 @@ public class FXMLGamingOnlineController implements Initializable {
                 opponentTurn = true;
                 if(myTurn && myTic.equals("X")){
                     playStateLabel.setText("X");
-                    playStateLabel.setStyle("-fx-text-fill: #AFE0AF;");
+                    turnLabel.setStyle("-fx-fill: #AFE0AF;");
+                    playStateLabel.setStyle("-fx-fill: #AFE0AF;");
                 }else{
                     playStateLabel.setText("O");
-                    playStateLabel.setStyle("-fx-text-fill: #ffe591;");
+                    turnLabel.setStyle("-fx-fill: #ffe591;");
+                    playStateLabel.setStyle("-fx-fill: #ffe591;");
                 }
                 System.out.println("I pressed "+buttonPressed.getId());
                 if(checkState()){
@@ -288,7 +290,7 @@ public class FXMLGamingOnlineController implements Initializable {
     private void opponentTurn(){
         try {
             String oppPressed = FXMLHomeScreenController.dis.readLine();
-            System.out.println(oppPressed);
+            System.out.println(oppPressed + " butto pressed");
             Button btnOpp = btn.get(oppPressed);
             btnOpp.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -400,7 +402,7 @@ public class FXMLGamingOnlineController implements Initializable {
     
     private boolean checkState(){
         System.out.println("checking state");
-        /*
+        
         checkColumns();
         checkRows();
         checkDiagonal();
@@ -411,13 +413,14 @@ public class FXMLGamingOnlineController implements Initializable {
                 @Override
                 public void run() {
                     if(display){
-                        System.out.println("display winner");
-                        //displayVideo("winner");
+                        //System.out.println("display winner");
+                        displayVideo("winner");
                         //AskDialog  serverIssueAlert  = new AskDialog();
                         //serverIssueAlert.serverIssueAlert("Congrats !! , your score right now is :"+ MainController.hash.get("score"));
                         
                     }else{
-                        System.out.println("display loser");
+                        displayVideo("loser");
+                        //System.out.println("display loser");
                         //AskDialog  serverIssueAlert  = new AskDialog();
                         //serverIssueAlert.serverIssueAlert("Oh, Hardluck next time..");
                     }
@@ -427,16 +430,17 @@ public class FXMLGamingOnlineController implements Initializable {
             return true; // ended game
             
         }else if(isFullGrid()){
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    AskDialog  serverIssueAlert  = new AskDialog();
-                    serverIssueAlert.serverIssueAlert("It's adraw !!");
-                }                
-            });
+            displayVideo("draw");
+//            Platform.runLater(new Runnable() {
+//                @Override
+//                public void run() {
+//                    AskDialog  serverIssueAlert  = new AskDialog();
+//                    serverIssueAlert.serverIssueAlert("It's adraw !!");
+//                }                
+//            });
             reset();
             return true;
-        }*/
+        }
         System.out.println("checking ended");
         return false;
     }
@@ -490,6 +494,18 @@ public class FXMLGamingOnlineController implements Initializable {
             }
         });
         thread.stop();
+    }
+    private void displayVideo(String type){
+        if(type.equals("winner")){
+           NavigationController displayVideo = new NavigationController("/view/FXMLVideo.fxml");
+           displayVideo.displayVideo("winner","Congratulation"); 
+        }else if(type.equals("loser")){
+           NavigationController displayVideo = new NavigationController("/view/FXMLVideo.fxml");
+           displayVideo.displayVideo("loser","opps!!");  
+        }else{
+             NavigationController displayVideo = new NavigationController("/view/FXMLVideo.fxml");
+           displayVideo.displayVideo("draw","opps!!");  
+        }
     }
     
 }

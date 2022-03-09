@@ -124,7 +124,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
         });
         thread.start();
     }    
-    public void startGame(boolean startPlayer) throws IOException {
+    public synchronized void startGame(boolean startPlayer) throws IOException {
         FXMLGamingOnlineController.myTurn = startPlayer;
         FXMLGamingOnlineController.opponentTurn = !startPlayer;
         System.out.println("game starteddddd");
