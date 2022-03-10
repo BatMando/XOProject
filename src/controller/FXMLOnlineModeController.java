@@ -40,11 +40,21 @@ public class FXMLOnlineModeController implements Initializable {
     private Text scoreLabel;
     String score;
     Thread thread;
+    @FXML
+    private ImageView recoredImage;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(!FXMLRecordsScreenController.checkIfFolderExist("local-mode")){
+            gameRecordsBtn.setDisable(true);
+            recoredImage.setOpacity(0.10);
+        }
+        else{
+           gameRecordsBtn.setDisable(false);
+           recoredImage.setOpacity(0.34);
+        }
         score = FXMLHomeScreenController.hash.get("score");
         scoreLabel.setText(score);
         // TODO
