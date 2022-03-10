@@ -75,12 +75,13 @@ public class AskDialog {
         alert.setTitle("Alert ASk");
         alert.getDialogPane().getButtonTypes().addAll(Ok);
         alert.setHeaderText(s);
-        alert.showAndWait();
+        
         
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(
         getClass().getResource("/CSS/cssStyling.css").toExternalForm());
         dialogPane.getStyleClass().add("infoDialog");
+        alert.showAndWait();
         
     }
     
