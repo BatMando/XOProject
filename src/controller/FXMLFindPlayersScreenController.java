@@ -191,6 +191,17 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 String userName = FXMLHomeScreenController.hash.get("username");
                                 String score = FXMLHomeScreenController.hash.get("score");
                                 
+                                AskDialog isrecoredGame = new AskDialog();
+                                Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                                if(check)
+                                {
+                                    ReadWriteHelper.createFile("online-mode");
+                                    ReadWriteHelper.writeFile(userName + ".");
+                                    ReadWriteHelper.writeFile(opponentUsername + ".");
+                                    ReadWriteHelper.writeFile("fristPlayer"+".");
+                                    ReadWriteHelper.writeFile("secondPlayer"+".");
+                                    isrecordOnline = true;
+                                }
                                 System.out.println("btn clicked "+opponentUsername+" score is : "+opponentScore);
                                 FXMLHomeScreenController.ps.println("request###"+button.getId()+"###"+FXMLHomeScreenController.hash.get("email")+"###"+ userName +"###"+ score);
                                 // pop up waiting for response from server 
@@ -210,17 +221,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 delay.play();
                                 //if()
                                 //if (alert.getResult() == ButtonType.YES) {
-                                    AskDialog isrecoredGame = new AskDialog();
-                                    Boolean check=isrecoredGame.alert("Do you want to record game ?");
-                                    if(check)
-                                    {
-                                        ReadWriteHelper.createFile("online-mode");
-                                        ReadWriteHelper.writeFile(userName + ".");
-                                        ReadWriteHelper.writeFile(opponentUsername + ".");
-                                        ReadWriteHelper.writeFile("fristPlayer"+".");
-                                        ReadWriteHelper.writeFile("secondPlayer"+".");
-                                        isrecordOnline = true;
-                                    }
+                                    
                                 //}
                                 
                             }
@@ -260,9 +261,21 @@ public class FXMLFindPlayersScreenController implements Initializable {
                 delay.setOnFinished(e -> alert.hide());
                                         
                 Optional<ButtonType> result = alert.showAndWait();
+                String userName = FXMLHomeScreenController.hash.get("username");
                 if (result.get() == Yes){ // accept to play
+                    AskDialog isrecoredGame = new AskDialog();
+                    Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                    if(check)
+                    {
+                        ReadWriteHelper.createFile("online-mode");
+                        ReadWriteHelper.writeFile(userName + ".");
+                        ReadWriteHelper.writeFile(opponentUsername + ".");
+                        ReadWriteHelper.writeFile("fristPlayer"+".");
+                        ReadWriteHelper.writeFile("secondPlayer"+".");
+                        isrecordOnline = true;
+                    }
                     System.out.println("game on");
-                    FXMLHomeScreenController.ps.println("accept###"+FXMLHomeScreenController.hash.get("email")+"###"+FXMLHomeScreenController.hash.get("username")+"###"+opponentMail);
+                    FXMLHomeScreenController.ps.println("accept###"+FXMLHomeScreenController.hash.get("email")+"###"+userName+"###"+opponentMail);
                     // initialize game
                     System.out.println("navigate to game screen");
                      Platform.runLater(()->{
