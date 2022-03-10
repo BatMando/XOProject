@@ -188,10 +188,6 @@ public class FXMLGamingOnlineController implements Initializable {
                 buttonPressed.setStyle("-fx-background-color:#ffffff57;"+"-fx-text-fill: #AFE0AF;"); 
                 buttonPressed.setText(myTic);
                 System.out.println("My Turn " +myTic);
-                //if(MainController.isrecord)
-//                if(isrecord){
-//                  AccessFile.writeFile(buttonPressed.getId()+buttonPressed.getText()+".");  
-//                }
                 if(FXMLFindPlayersScreenController.isrecordOnline)
                     ReadWriteHelper.writeFile(buttonPressed.getId()+myTic+".");
                 myTurn = false;
@@ -200,8 +196,13 @@ public class FXMLGamingOnlineController implements Initializable {
                     playStateLabel.setText("X");
                     turnLabel.setStyle("-fx-fill: #AFE0AF;");
                     playStateLabel.setStyle("-fx-fill: #AFE0AF;");
-                }else{
-                    playStateLabel.setText("O");
+                }else if(myTurn && myTic.equals("O")){
+                    playStateLabel.setText(myTic);
+                    turnLabel.setStyle("-fx-fill: #ffe591;");
+                    playStateLabel.setStyle("-fx-fill: #ffe591;");
+                }
+                else{
+                    playStateLabel.setText(oppTic);
                     turnLabel.setStyle("-fx-fill: #ffe591;");
                     playStateLabel.setStyle("-fx-fill: #ffe591;");
                 }
@@ -305,6 +306,7 @@ public class FXMLGamingOnlineController implements Initializable {
                         public void run() {
                             button.setStyle("-fx-background-color:#ffffff57;"+"-fx-text-fill: #ffe591;"); 
                             button.setText(oppTic);
+                            
                             System.out.println("myTic "+ oppTic);
                             /*if(isrecord){
                               AccessFile.writeFile(btnOpp.getId()+btnOpp.getText()+".");  
@@ -319,6 +321,10 @@ public class FXMLGamingOnlineController implements Initializable {
             btnOpp.fire();
             myTurn= true;
             opponentTurn = false;
+            playStateLabel.setText(myTic);
+            turnLabel.setStyle("-fx-fill: #AFE0AF;");
+            playStateLabel.setStyle("-fx-fill: #AFE0AF;");
+          
 //            Platform.runLater(new Runnable(){
 //                @Override
 //                public void run(){
@@ -337,9 +343,15 @@ public class FXMLGamingOnlineController implements Initializable {
         if(btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && !btn1.getText().equals("")){
             gameState = false;
             if(btn1.getText().equals(myTic)){
+                btn1.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn2.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn3.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
                 display = true;
                 updateScore();
             }else{
+                btn1.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn2.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn3.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
                 System.out.println("opp win");
             }
         }
@@ -347,8 +359,14 @@ public class FXMLGamingOnlineController implements Initializable {
             gameState = false;
             if(btn4.getText().equals(myTic)){
                display = true;
+                btn4.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn6.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
                 updateScore();
             }else{
+                 btn4.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn6.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
                 System.out.println("opp won!");
             }
         }
@@ -356,7 +374,14 @@ public class FXMLGamingOnlineController implements Initializable {
             gameState = false;
             if(btn7.getText().equals(myTic)){
                display = true;
+                btn7.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn8.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn9.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
                 updateScore();
+            }else{
+             btn7.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn8.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn9.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
             }
         }
     }
@@ -365,14 +390,28 @@ public class FXMLGamingOnlineController implements Initializable {
         if(btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && !btn1.getText().equals("")){
             if(btn1.getText().equals(myTic)){
                display = true;
+               btn1.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn4.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn7.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
                 updateScore();
             }
+            else{
+            btn1.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn4.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn7.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); }
             gameState = false;
         }
         else if(btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && !btn2.getText().equals("")){
             if(btn2.getText().equals(myTic)){
               display = true;
+                btn2.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn8.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
                 updateScore();
+            }else{
+                 btn2.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn8.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
             }
             gameState = false;
         }
@@ -380,6 +419,14 @@ public class FXMLGamingOnlineController implements Initializable {
             if(btn3.getText().equals(myTic)){
              display = true;
                updateScore();
+                btn3.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn6.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn9.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+            }
+            else{
+                btn3.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn6.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn9.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
             }
             gameState = false;
         }
@@ -388,15 +435,29 @@ public class FXMLGamingOnlineController implements Initializable {
     private void checkDiagonal(){
         if(btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && !btn1.getText().equals("")){
             if(btn1.getText().equals(myTic)){
+                 btn1.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn9.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
               display = true;
                 updateScore();
+            }else{
+                btn1.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn9.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
             }
             gameState = false;
         }
         else if(btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && !btn3.getText().equals("")){
             if(btn3.getText().equals(myTic)){
                display = true;
+                btn3.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
+                btn7.setStyle("-fx-background-color:#AFE0AF;"+"-fx-text-fill:#ffffff;"); 
                 updateScore();
+            }else{
+                 btn3.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn5.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
+                btn7.setStyle("-fx-background-color:#DE7D7D;"+"-fx-text-fill:#ffffff;"); 
             }
             gameState = false;
         }

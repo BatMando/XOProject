@@ -30,12 +30,12 @@ public class FXMLHomeScreenController implements Initializable {
     private Button gameRecordsBtn;
 
     static boolean checkip=false;
-    static Socket socket;
-    static DataInputStream dis;
-    static PrintStream ps;
+    public static Socket socket;
+    public static DataInputStream dis;
+    public static PrintStream ps;
     Preferences prefs;
     int checkname;
-    static HashMap<String, String>hash = new HashMap<>();
+    public static HashMap<String, String>hash = new HashMap<>();
     @FXML
     private Button singleModeBtn;
     @FXML
