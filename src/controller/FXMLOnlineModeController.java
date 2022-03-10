@@ -47,7 +47,7 @@ public class FXMLOnlineModeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(!FXMLRecordsScreenController.checkIfFolderExist("local-mode")){
+        if(!FXMLRecordsScreenController.checkIfFolderExist("online-mode")){
             gameRecordsBtn.setDisable(true);
             recoredImage.setOpacity(0.10);
         }

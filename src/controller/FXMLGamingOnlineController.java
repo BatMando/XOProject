@@ -310,7 +310,7 @@ public class FXMLGamingOnlineController implements Initializable {
                               AccessFile.writeFile(btnOpp.getId()+btnOpp.getText()+".");  
                             }*/
                             if(FXMLFindPlayersScreenController.isrecordOnline)
-                             ReadWriteHelper.writeFile(btnOpp.getId()+oppTic+".");
+                                ReadWriteHelper.writeFile(btnOpp.getId()+oppTic+".");
                             checkState();
                         }
                     });
