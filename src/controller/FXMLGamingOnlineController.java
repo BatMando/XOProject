@@ -8,6 +8,7 @@ package controller;
 import Helper.AskDialog;
 import Helper.NavigationController;
 import Helper.Player;
+import Helper.ReadWriteHelper;
 import static controller.FXMLFindPlayersScreenController.state;
 import java.io.IOException;
 import java.net.URL;
@@ -180,7 +181,7 @@ public class FXMLGamingOnlineController implements Initializable {
     
     @FXML
     private void buttonPressed(ActionEvent event) {
-        Button buttonPressed ;
+        Button buttonPressed = null;
         if(gameState && myTurn){
             buttonPressed = (Button) event.getSource();
             if(buttonPressed.getText().equals("")){
@@ -188,9 +189,11 @@ public class FXMLGamingOnlineController implements Initializable {
                 buttonPressed.setText(myTic);
                 System.out.println("My Turn " +myTic);
                 //if(MainController.isrecord)
-                /*if(isrecord){
-                  AccessFile.writeFile(buttonPressed.getId()+buttonPressed.getText()+".");  
-                }*/
+//                if(isrecord){
+//                  AccessFile.writeFile(buttonPressed.getId()+buttonPressed.getText()+".");  
+//                }
+                if(FXMLFindPlayersScreenController.isrecordOnline)
+                    ReadWriteHelper.writeFile(buttonPressed.getId()+myTic+".");
                 myTurn = false;
                 opponentTurn = true;
                 if(myTurn && myTic.equals("X")){
@@ -202,16 +205,17 @@ public class FXMLGamingOnlineController implements Initializable {
                     turnLabel.setStyle("-fx-fill: #ffe591;");
                     playStateLabel.setStyle("-fx-fill: #ffe591;");
                 }
+//                if(FXMLFindPlayersScreenController.isrecordOnline)
+//                    ReadWriteHelper.writeFile(buttonPressed.getId()+buttonPressed.getText()+".");
                 System.out.println("I pressed "+buttonPressed.getId());
                 if(checkState()){
-                    
                     FXMLHomeScreenController.ps.println("finishgameTic###"+FXMLHomeScreenController.hash.get("email")+"###"+buttonPressed.getId());
                 }else{
                     FXMLHomeScreenController.ps.println("gameTic###"+FXMLHomeScreenController.hash.get("email")+"###"+buttonPressed.getId());
                      System.out.println("sending game tic");
                 }
-                
             }
+            
         }
     }
 
@@ -305,6 +309,8 @@ public class FXMLGamingOnlineController implements Initializable {
                             /*if(isrecord){
                               AccessFile.writeFile(btnOpp.getId()+btnOpp.getText()+".");  
                             }*/
+                            if(FXMLFindPlayersScreenController.isrecordOnline)
+                             ReadWriteHelper.writeFile(btnOpp.getId()+oppTic+".");
                             checkState();
                         }
                     });
@@ -313,7 +319,13 @@ public class FXMLGamingOnlineController implements Initializable {
             btnOpp.fire();
             myTurn= true;
             opponentTurn = false;
-
+//            Platform.runLater(new Runnable(){
+//                @Override
+//                public void run(){
+//                    if(FXMLFindPlayersScreenController.isrecordOnline)
+//                             ReadWriteHelper.writeFile(btnOpp.getId()+oppTic+".");
+//                }
+//            });
         } catch (IOException ex) {
             Logger.getLogger(FXMLGamingOnlineController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -55,6 +55,7 @@ public class FXMLRecordsScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         recordsListView.applyCss();
         System.out.println(listType);  
         
@@ -70,8 +71,9 @@ public class FXMLRecordsScreenController implements Initializable {
         }
         
         File folder = new File("record/"+dir);
+        File[] listOfFiles = folder.listFiles();
         System.out.println("record/"+dir);
-        if(folder.exists()){
+        if(folder.exists() && listOfFiles.length != 0){
             return true;
         }
         return false;

@@ -46,8 +46,8 @@ public class ReadWriteHelper {
         }else if(listType.equals("online-mode")){
             File dir = new File("record/savedOnlineGame");
             dir.mkdirs();
-           // pref.put(c.getCurrentDateTime(), c.getCurrentDateTime());
-           // file = new File(dir,pref.get(c.getCurrentDateTime(),""));
+            prefs.put(c.getCurrentDateTime(), c.getCurrentDateTime());
+            file = new File(dir,prefs.get(c.getCurrentDateTime(),""));
             
         }  
            try {

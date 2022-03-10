@@ -42,10 +42,20 @@ public class FXMLHomeScreenController implements Initializable {
     private Button oneVSOneBtn;
     @FXML
     private Button onlineModeBtn;
+    @FXML
+    private ImageView recoredImage;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        if(!FXMLRecordsScreenController.checkIfFolderExist("local-mode")){
+            gameRecordsBtn.setDisable(true);
+            recoredImage.setOpacity(0.10);
+        }
+        else{
+           gameRecordsBtn.setDisable(false);
+           recoredImage.setOpacity(0.34);
+        }
         prefs = Preferences.userNodeForPackage(FXMLHomeScreenController.class);
         if(socket !=null){
             try {

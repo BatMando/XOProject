@@ -6,8 +6,11 @@
 package controller;
 
 import Helper.AskDialog;
+import Helper.CustomDialog;
 import Helper.NavigationController;
 import Helper.Player;
+import Helper.ReadWriteHelper;
+import static controller.FXMLChooseLevelController.isrecord;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -61,6 +64,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
     public static String opponentUsername ;
     public static boolean state;
     Preferences prefs;
+    public static boolean isrecordOnline = false;
     /**
      * Initializes the controller class.
      */
@@ -184,8 +188,11 @@ public class FXMLFindPlayersScreenController implements Initializable {
                             public void handle(ActionEvent event) {
                                 opponentUsername = x.getUserName();
                                 opponentScore = x.getScore();
+                                String userName = FXMLHomeScreenController.hash.get("username");
+                                String score = FXMLHomeScreenController.hash.get("score");
+                                
                                 System.out.println("btn clicked "+opponentUsername+" score is : "+opponentScore);
-                                FXMLHomeScreenController.ps.println("request###"+button.getId()+"###"+FXMLHomeScreenController.hash.get("email")+"###"+FXMLHomeScreenController.hash.get("username")+"###"+FXMLHomeScreenController.hash.get("score"));
+                                FXMLHomeScreenController.ps.println("request###"+button.getId()+"###"+FXMLHomeScreenController.hash.get("email")+"###"+ userName +"###"+ score);
                                 // pop up waiting for response from server 
                                 ButtonType Yes = new ButtonType("Ok"); // can use an Alert, Dialog, or PopupWindow as needed...
                                 alert = new Alert(Alert.AlertType.NONE);
@@ -201,6 +208,21 @@ public class FXMLFindPlayersScreenController implements Initializable {
 
                                 alert.show();
                                 delay.play();
+                                //if()
+                                //if (alert.getResult() == ButtonType.YES) {
+                                    AskDialog isrecoredGame = new AskDialog();
+                                    Boolean check=isrecoredGame.alert("Do you want to record game ?");
+                                    if(check)
+                                    {
+                                        ReadWriteHelper.createFile("online-mode");
+                                        ReadWriteHelper.writeFile(userName + ".");
+                                        ReadWriteHelper.writeFile(opponentUsername + ".");
+                                        ReadWriteHelper.writeFile("fristPlayer"+".");
+                                        ReadWriteHelper.writeFile("secondPlayer"+".");
+                                        isrecordOnline = true;
+                                    }
+                                //}
+                                
                             }
                         });
                         vbox.getChildren().add(button);
