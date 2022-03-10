@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.stage.StageStyle;
 /**
  *
  * @author Toba
@@ -23,11 +24,15 @@ public class AskDialog {
         ButtonType Yes = new ButtonType("Yes");
         ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert a = new Alert(Alert.AlertType.NONE);
+        //a.initStyle(StageStyle.TRANSPARENT);
         a.setTitle("Alert ASk");
         a.getDialogPane().getButtonTypes().addAll(Yes, No);
         a.setHeaderText(s);
-
+        
         DialogPane dialogPane = a.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
         
         a.showAndWait();
 
@@ -51,6 +56,11 @@ public class AskDialog {
         a.getDialogPane().getButtonTypes().addAll(yes, no);
         a.setHeaderText(message);
         
+        DialogPane dialogPane = a.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
+        
         a.showAndWait();
 
         if (a.getResult() == yes) {
@@ -67,6 +77,11 @@ public class AskDialog {
         alert.setHeaderText(s);
         alert.showAndWait();
         
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
+        
     }
     
     public void serverIssueAlert(String message){  
@@ -77,10 +92,10 @@ public class AskDialog {
         a.setHeaderText(message);
 //
 //         //a.setContentText(s);
-//        DialogPane dialogPane = a.getDialogPane();
-//        dialogPane.getStylesheets().add(
-//        getClass().getResource("/css/fullpackstyling.css").toExternalForm());
-//        dialogPane.getStyleClass().add("infoDialog");
+        DialogPane dialogPane = a.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
 
         a.showAndWait();    
     }
