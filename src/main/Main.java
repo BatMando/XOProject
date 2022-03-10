@@ -5,6 +5,10 @@
  */
 package main;
 
+import controller.FXMLHomeScreenController;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,8 +28,15 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(false);     
         stage.show();
+//        stage.setOnCloseRequest((event) -> {
+//            
+//           Thread listenerThread = new Thread(() -> {
+//                FXMLHomeScreenController.ps.println("logout###"+FXMLHomeScreenController.hash.get("email"));
+//            });
+//            System.exit(1);
+//        });       
     }
 
     /**
