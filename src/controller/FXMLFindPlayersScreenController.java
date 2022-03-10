@@ -164,7 +164,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                     //btn1.getScene().getStylesheets().add(getClass().getResource("/css/fullpackstyling.css").toString());
                     scrollpane.setContent(null);
                     vbox.getChildren().clear();
-                    
+                    scrollpane.getStylesheets().add(getClass().getResource("/CSS/cssStyling.css").toExternalForm());
                     for(Player x : onlinePlayers){
                         System.out.println("inside for loop");
                         ImageView view,view2;
@@ -177,8 +177,8 @@ public class FXMLFindPlayersScreenController implements Initializable {
                         Button button = new Button(x.getUserName(),view);
                         button.setAlignment(Pos.BOTTOM_LEFT);
                         
-                        //button.getStyleClass().add("button1");
                         button.setId(""+x.getEmail());
+                        //button.getId().getScene().getStylesheets().add(getClass().getResource("/CSS/cssStyling.css"));
                         if(x.isIsPlaying()){
                             button.setDisable(true);
                         }
@@ -231,6 +231,9 @@ public class FXMLFindPlayersScreenController implements Initializable {
                         });
                         vbox.getChildren().add(button);
                         scrollpane.setContent(vbox);
+                        scrollpane.getStyleClass().add("findPlayerScroll");
+                        vbox.getStyleClass().add("vBoxStyle");
+                        button.getStyleClass().add("playerBtn");
                     }
                     onlinePlayers.clear();
                 
