@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 10, 2022, 6:30:25 PM
+    Author     : Thoraya Hamdy
+*/
+
+.infoDialog{
+    -fx-background-color: #2A2D53;
+     -fx-padding: 20 20 20 25;
+}
+.infoDialog > *.button-bar > *.container{
+    -fx-background-color: #2A2D53;
+    -fx-alignment:center;
+}
+/*.infoDialog > *.label.content{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}*/
+.infoDialog:header *.header-panel{
+    -fx-background-color: #2A2D53;
+}
+.infoDialog:header *.header-panel *.label{
+    -fx-font-size: 30px;
+    -fx-font-family: Raleway;
+    
+    -fx-text-fill: #ffffff   
+}
+/*
+background: rgb(143,76,251);
+background: linear-gradient(90deg, rgba(143,76,251,1) 0%, rgba(128,199,243,1) 100%)
+*/
+.myDialog{
+    -fx-background-color: #2A2D53;
+     -fx-padding: 20 20 20 25;
+}
+.myDialog > *.button-bar > *.container{
+    -fx-background-color: #2A2D53;
+}
+.myDialog > *.label.content{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.myDialog:header *.header-panel{
+    -fx-background-color: #2A2D53;
+}
+.myDialog:header *.header-panel *.label{
+    -fx-font-size: 30px;
+    -fx-font-family: "Raleway-Regular";
+    
+    -fx-text-fill: #ffffff;
+}
+@font-face {
+    font-family: 'Raleway-Regular';
+    src: url('Raleway-Regular.ttf');
+}
+@font-face {
+    font-family: 'PhosphatePro-Inline';
+    src: url('PhosphatePro-Inline.otf');
+}
+/*#4C3388
+#9885fc*/
+.dialog-pane .button{
+   -fx-background-color : #ffffff;
+   -fx-background-radius :  20;
+   -fx-text-fill:#2A2D53;
+   -fx-font-weight: bold;
+ }

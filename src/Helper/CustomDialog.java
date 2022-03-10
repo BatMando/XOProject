@@ -41,7 +41,11 @@ public class CustomDialog {
 
         alert.getButtonTypes().setAll(buttonTypeOk,
                 buttonTypeCancel);
-
+        
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+             getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+             dialogPane.getStyleClass().add("myDialog");
 
         Optional<ButtonType> result = alert.showAndWait();
        if(result.get() == buttonTypeOk){
@@ -72,7 +76,7 @@ public class CustomDialog {
        alert.setTitle("Alert");
        alert.setHeaderText(message);
        alert.getDialogPane().setContent(content);
-
+       
          buttonTypeOk = new ButtonType("Ok");
          buttonTypeCancel = new ButtonType("Cancel", 
         ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -80,7 +84,11 @@ public class CustomDialog {
         alert.getButtonTypes().setAll(buttonTypeOk,
                 buttonTypeCancel);
 
-
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+             getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+             dialogPane.getStyleClass().add("myDialog");
+             
         Optional<ButtonType> result = alert.showAndWait();
        return result;
 

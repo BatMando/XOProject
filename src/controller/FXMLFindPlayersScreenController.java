@@ -204,7 +204,8 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 }
                                 System.out.println("btn clicked "+opponentUsername+" score is : "+opponentScore);
                                 FXMLHomeScreenController.ps.println("request###"+button.getId()+"###"+FXMLHomeScreenController.hash.get("email")+"###"+ userName +"###"+ score);
-                                // pop up waiting for response from server 
+                                // pop up waiting for response from server
+                                
                                 ButtonType Yes = new ButtonType("Ok"); // can use an Alert, Dialog, or PopupWindow as needed...
                                 alert = new Alert(Alert.AlertType.NONE);
                                 alert.setTitle("Information Dialog");
@@ -212,7 +213,9 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 alert.getDialogPane().getButtonTypes().addAll(Yes);
                                
                                 DialogPane dialogPane = alert.getDialogPane();
-
+                                dialogPane.getStylesheets().add(
+                                getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+                                     dialogPane.getStyleClass().add("myDialog");
                                 // hide popup after 3 seconds:
                                 PauseTransition delay = new PauseTransition(Duration.seconds(10));
                                 delay.setOnFinished(e -> alert.hide());
@@ -256,7 +259,10 @@ public class FXMLFindPlayersScreenController implements Initializable {
                 alert.getDialogPane().getButtonTypes().addAll(Yes,No);
                 
                 DialogPane dialogPane = alert.getDialogPane();
-
+                dialogPane.getStylesheets().add(
+                getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+                dialogPane.getStyleClass().add("myDialog");
+                
                 PauseTransition delay = new PauseTransition(Duration.seconds(10));
                 delay.setOnFinished(e -> alert.hide());
                                         
@@ -329,7 +335,10 @@ public class FXMLFindPlayersScreenController implements Initializable {
                 alert.setHeaderText("Your Opponent Refused to Challenge you!");
                 alert.getDialogPane().getButtonTypes().addAll(Yes);
                 DialogPane dialogPane = alert.getDialogPane();
-
+                dialogPane.getStylesheets().add(
+                getClass().getResource("/CSS/cssStyling.css").toExternalForm());
+                dialogPane.getStyleClass().add("myDialog");
+                
                 alert.showAndWait();
             }
         });
