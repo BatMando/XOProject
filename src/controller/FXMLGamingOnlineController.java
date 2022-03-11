@@ -266,14 +266,14 @@ public class FXMLGamingOnlineController implements Initializable {
         if(myTurn){
             myTic = "X";
             oppTic = "O";
-            player1Label.setText(FXMLHomeScreenController.hash.get("username"));
+            player1Label.setText("Me");
             player1scoreLbl.setText(FXMLHomeScreenController.hash.get("score")); 
             player2Label.setText(FXMLFindPlayersScreenController.opponentUsername);
             player2scoreLbl.setText(FXMLFindPlayersScreenController.opponentScore+"");
         }else{
             myTic = "O";
             oppTic = "X";
-            player2Label.setText(FXMLHomeScreenController.hash.get("username"));
+            player2Label.setText("Me");
             player2scoreLbl.setText(FXMLHomeScreenController.hash.get("score")); 
             player1Label.setText(FXMLFindPlayersScreenController.opponentUsername);
             player1scoreLbl.setText(FXMLFindPlayersScreenController.opponentScore+"");

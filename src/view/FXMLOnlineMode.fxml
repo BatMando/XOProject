@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -25,7 +26,7 @@
             <Font name="Poppins Bold" size="31.0" />
          </font>
       </Label>
-      <StackPane layoutX="121.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
+      <StackPane layoutX="230.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
          <children>
             <ImageView fitHeight="184.0" fitWidth="158.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,43 +59,7 @@
             <Button fx:id="findPlayerBtn" mnemonicParsing="false" onAction="#navigateToFindPlayerScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
          </children>
       </StackPane>
-      <StackPane layoutX="345.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
-         <children>
-            <ImageView fitHeight="184.0" fitWidth="158.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/modesBtnBg@2x.png" />
-               </image>
-               <effect>
-                  <GaussianBlur radius="1.55" />
-               </effect>
-            </ImageView>
-            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="84.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/leaderboardImg@2x.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets left="4.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="Leaderboard " textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Raleway SemiBold" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="12.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
-            </VBox>
-            <Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#navigateToLeaderboardScreen" opacity="0.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-color: #4C3388;" textFill="WHITE" />
-         </children>
-      </StackPane>
-      <StackPane layoutX="575.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
+      <StackPane layoutX="472.0" layoutY="167.0" prefHeight="150.0" prefWidth="158.0">
          <children>
             <ImageView fx:id="recoredImage" fitHeight="184.0" fitWidth="158.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -137,22 +102,40 @@
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#Logout" opacity="0.0" prefHeight="60.0" prefWidth="65.0" />
          </children>
       </StackPane>
-      <HBox layoutX="649.0" layoutY="35.0" prefHeight="52.0" prefWidth="168.0" spacing="8.0">
+      <StackPane layoutX="638.0" layoutY="35.0">
          <children>
-            <ImageView fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/scorePointsImg@2x.png" />
-               </image>
-            </ImageView>
-            <Text fx:id="scoreLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="12345" textAlignment="CENTER">
-               <font>
-                  <Font name="Poppins Regular" size="24.0" />
-               </font>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Text>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#ffffff46" height="63.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="0.0" width="178.0">
+               <effect>
+                  <GaussianBlur radius="2.69" />
+               </effect>
+            </Rectangle>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label fx:id="userNameLabel" alignment="TOP_CENTER" text="Mahamed Ahmed" textFill="WHITE">
+                     <font>
+                        <Font name="Poppins Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="21.0" prefWidth="145.0" spacing="8.0">
+                     <children>
+                        <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/scorePointsImg@2x.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="scoreLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="12345" textAlignment="CENTER">
+                           <font>
+                              <Font name="Poppins Regular" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </HBox>
+      </StackPane>
    </children>
 </AnchorPane>

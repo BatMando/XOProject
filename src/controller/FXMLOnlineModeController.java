@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -29,8 +30,6 @@ public class FXMLOnlineModeController implements Initializable {
     @FXML
     private Button findPlayerBtn;
     @FXML
-    private Button leaderboardBtn;
-    @FXML
     private Button gameRecordsBtn;
     @FXML
     private ImageView backBtn;
@@ -40,8 +39,11 @@ public class FXMLOnlineModeController implements Initializable {
     private Text scoreLabel;
     String score;
     Thread thread;
+   
     @FXML
     private ImageView recoredImage;
+    @FXML
+    private Label userNameLabel;
     /**
      * Initializes the controller class.
      */
@@ -55,6 +57,7 @@ public class FXMLOnlineModeController implements Initializable {
            gameRecordsBtn.setDisable(false);
            recoredImage.setOpacity(0.34);
         }
+        userNameLabel.setText(FXMLHomeScreenController.hash.get("username"));
         score = FXMLHomeScreenController.hash.get("score");
         scoreLabel.setText(score);
         // TODO
@@ -66,9 +69,6 @@ public class FXMLOnlineModeController implements Initializable {
         navigateToFindPlayers.navigateTo(event);
     }
 
-    @FXML
-    private void navigateToLeaderboardScreen(ActionEvent event) {
-    }
 
     @FXML
     private void navigateToRecordedGamesScreen(ActionEvent event) {
