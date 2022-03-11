@@ -127,7 +127,9 @@ public class FXMLGamingOnlineController implements Initializable {
                     do {                        
                          try{
                             String data = FXMLHomeScreenController.dis.readLine();
-                            if(data.equals("null")){
+                            if(data==null){
+                                System.err.println("there is null");
+                                close();
                                 break;
                             }
                             switch(data){
@@ -137,13 +139,13 @@ public class FXMLGamingOnlineController implements Initializable {
                                     break;
                                 case "finalgameTic":
                                     opponentTurn();
-                                    reset();
+                                    endGame();
                                     break;
                                 case "endGame":
                                     endGame();
                                     break;
                                 case "withdraw":
-                                    
+                                    withdraw();
                                     break;
                                 case "close":
                                     close();
@@ -151,7 +153,7 @@ public class FXMLGamingOnlineController implements Initializable {
                                     System.out.println("default in gaming");
                                     System.out.println("**********"+data+"/////////////");
                             }
-                        } catch (IOException ex) {
+                        } catch (IOException | NullPointerException ex) {
                             close();
                         }
                     } while(true);
@@ -221,8 +223,7 @@ public class FXMLGamingOnlineController implements Initializable {
     }
 
 
-    @FXML
-    private void withdraw(ActionEvent event) {
+    private void withdraw() {
         System.out.println("withdraw");
         updateScore();
         FXMLHomeScreenController.ps.println("available###"+FXMLHomeScreenController.hash.get("email"));
@@ -280,22 +281,12 @@ public class FXMLGamingOnlineController implements Initializable {
         System.out.println("my tic" +myTic);
     }
     
-    private void endGame(){
-        /*Platform.runLater(() -> {
-            if(alert.isShowing()){
-                alert.close();
-            }
-            gameState = false;
-            ps.println("gameEnded###"+hash.get("email")+"###");//add score
-        });*/
-        System.out.println("end game called");
-    }
-    
+  
 
     private void opponentTurn(){
         try {
             String oppPressed = FXMLHomeScreenController.dis.readLine();
-            System.out.println(oppPressed + " butto pressed");
+            System.out.println(oppPressed + " button pressed");
             Button btnOpp = btn.get(oppPressed);
             btnOpp.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -306,11 +297,9 @@ public class FXMLGamingOnlineController implements Initializable {
                         public void run() {
                             button.setStyle("-fx-background-color:#ffffff57;"+"-fx-text-fill: #ffe591;"); 
                             button.setText(oppTic);
-                            
+                           
                             System.out.println("myTic "+ oppTic);
-                            /*if(isrecord){
-                              AccessFile.writeFile(btnOpp.getId()+btnOpp.getText()+".");  
-                            }*/
+                           
                             if(FXMLFindPlayersScreenController.isrecordOnline)
                                 ReadWriteHelper.writeFile(btnOpp.getId()+oppTic+".");
                             checkState();
@@ -325,13 +314,6 @@ public class FXMLGamingOnlineController implements Initializable {
             turnLabel.setStyle("-fx-fill: #AFE0AF;");
             playStateLabel.setStyle("-fx-fill: #AFE0AF;");
           
-//            Platform.runLater(new Runnable(){
-//                @Override
-//                public void run(){
-//                    if(FXMLFindPlayersScreenController.isrecordOnline)
-//                             ReadWriteHelper.writeFile(btnOpp.getId()+oppTic+".");
-//                }
-//            });
         } catch (IOException ex) {
             Logger.getLogger(FXMLGamingOnlineController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -488,37 +470,27 @@ public class FXMLGamingOnlineController implements Initializable {
                     if(display){
                         //System.out.println("display winner");
                         displayVideo("winner");
-                        //AskDialog  serverIssueAlert  = new AskDialog();
-                        //serverIssueAlert.serverIssueAlert("Congrats !! , your score right now is :"+ MainController.hash.get("score"));
                         
                     }else{
                         displayVideo("loser");
-                        //System.out.println("display loser");
-                        //AskDialog  serverIssueAlert  = new AskDialog();
-                        //serverIssueAlert.serverIssueAlert("Oh, Hardluck next time..");
+                        
                     }
                 }
             });
-            reset();
+            endGame();
             return true; // ended game
             
         }else if(isFullGrid()){
             displayVideo("draw");
-//            Platform.runLater(new Runnable() {
-//                @Override
-//                public void run() {
-//                    AskDialog  serverIssueAlert  = new AskDialog();
-//                    serverIssueAlert.serverIssueAlert("It's adraw !!");
-//                }                
-//            });
-            reset();
+
+            endGame();
             return true;
         }
         System.out.println("checking ended");
         return false;
     }
 
-    private void reset(){
+    private void endGame(){
 
         FXMLHomeScreenController.ps.println("available###"+FXMLHomeScreenController.hash.get("email"));
         thread.stop();
@@ -561,7 +533,7 @@ public class FXMLGamingOnlineController implements Initializable {
         AskDialog  serverIssueAlert  = new AskDialog();
         serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
             try {
-                gotoHell();
+                gotoHomeHell();
             } catch (IOException ex) {
                 Logger.getLogger(FXMLFindPlayersScreenController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -581,4 +553,22 @@ public class FXMLGamingOnlineController implements Initializable {
         }
     }
     
+    
+    @FXML
+     public void backToOnlinePage(ActionEvent event){
+        System.out.println("backToOnlinePage: called");
+        System.out.println("Emial " + FXMLHomeScreenController.hash.get("email"));
+        if(FXMLHomeScreenController.hash.get("email")!= null){
+           AskDialog  logoutAlert  = new AskDialog();
+           Boolean logedOut  = logoutAlert.alert("Are you sure you want to logout","Alert Issue");
+           if(logedOut){
+               System.out.println("Send to server to logout");
+               FXMLHomeScreenController.ps.println("withdraw");
+               FXMLHomeScreenController.ps.println("available###"+FXMLHomeScreenController.hash.get("email"));
+               thread.stop();
+               NavigationController btnback = new NavigationController("/view/FXMLOnlineMode.fxml");
+               btnback.navigateTo(event); 
+           }
+        }
+    }
 }
