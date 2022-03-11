@@ -9,7 +9,8 @@ and open the template in the editor.
 */
 .playerBtn
 {
--fx-background-color : #393351;
+ 
+-fx-background-color : transparent;
 -fx-background-radius :  10 10 10 10;
 -fx-text-fill: white;
 -fx-font-size: 14px;
@@ -20,20 +21,27 @@ and open the template in the editor.
 }
 
 .findPlayerScroll{
-    -fx-background-color:  #ffffff57;
+    -fx-background-color:transparent;
     -fx-background-radius :  10 10 10 10;
 
+}
+
+.scroll-pane{
+   -fx-background-color:transparent;
+}
+.scroll-pane > .viewport {  
+   -fx-background-color: transparent;
 }
 .vBoxStyle{
     -fx-background-color:  #ffffff57;
     -fx-spacing:5px;
 }
 .infoDialog{
-    -fx-background-color: #2A2D53;
+    -fx-background-color: #2B2D4B;
      -fx-padding: 20 20 20 25;
 }
 .infoDialog > *.button-bar > *.container{
-    -fx-background-color: #2A2D53;
+    -fx-background-color: #2B2D4B;
     -fx-alignment:center;
 }
 /*.infoDialog > *.label.content{
@@ -41,7 +49,7 @@ and open the template in the editor.
     -fx-font-weight: bold;
 }*/
 .infoDialog:header *.header-panel{
-    -fx-background-color: #2A2D53;
+    -fx-background-color: #2B2D4B;
 }
 .infoDialog:header *.header-panel *.label{
     -fx-font-size: 30px;
@@ -54,18 +62,18 @@ background: rgb(143,76,251);
 background: linear-gradient(90deg, rgba(143,76,251,1) 0%, rgba(128,199,243,1) 100%)
 */
 .myDialog{
-    -fx-background-color: #2A2D53;
+    -fx-background-color: #2B2D4B;
      -fx-padding: 20 20 20 25;
 }
 .myDialog > *.button-bar > *.container{
-    -fx-background-color: #2A2D53;
+    -fx-background-color: #2B2D4B;
 }
 .myDialog > *.label.content{
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 .myDialog:header *.header-panel{
-    -fx-background-color: #2A2D53;
+    -fx-background-color: #2B2D4B;
 }
 .myDialog:header *.header-panel *.label{
     -fx-font-size: 30px;
@@ -86,6 +94,19 @@ background: linear-gradient(90deg, rgba(143,76,251,1) 0%, rgba(128,199,243,1) 10
 .dialog-pane .button{
    -fx-background-color : #ffffff;
    -fx-background-radius :  20;
-   -fx-text-fill:#2A2D53;
+   -fx-text-fill:#2B2D4B;
    -fx-font-weight: bold;
  }
+ 
+
+.list-view .list-cell:even {
+-fx-background-color:  #393351;
+-fx-text-fill: white;
+
+-fx-background-radius :  30 0 0 30;
+}
+.list-view .list-cell:odd {
+-fx-background-color : #2F2B43 ;
+-fx-text-fill: white;
+-fx-background-radius :  30 0 0 30;
+}
