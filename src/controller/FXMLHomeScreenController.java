@@ -88,7 +88,8 @@ public class FXMLHomeScreenController implements Initializable {
             Boolean check=isrecoredGame.alert("Do you want to record game ?");
             if(check)
             {
-                ReadWriteHelper.createFile("local-mode");
+                ReadWriteHelper.createFile("local-mode", prefs.get("fristPlayer","")
+                        , prefs.get("secondPlayer", ""));
                 ReadWriteHelper.writeFile(prefs.get("fristPlayer","")+".");
                 ReadWriteHelper.writeFile(prefs.get("secondPlayer", "") + ".");
                 ReadWriteHelper.writeFile("fristPlayer"+".");

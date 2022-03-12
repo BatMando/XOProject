@@ -100,13 +100,14 @@ background: linear-gradient(90deg, rgba(143,76,251,1) 0%, rgba(128,199,243,1) 10
  
 
 .list-view .list-cell:even {
--fx-background-color:  #393351;
--fx-text-fill: white;
-
--fx-background-radius :  30 0 0 30;
+    -fx-background-color:  #2B2D4B;
+    -fx-text-fill: white;
+}
+.list-view{
+    -fx-spacing: 5px;
+    -fx-background-color:  white;
 }
 .list-view .list-cell:odd {
--fx-background-color : #2F2B43 ;
+-fx-background-color : #2F314E ;
 -fx-text-fill: white;
--fx-background-radius :  30 0 0 30;
 }

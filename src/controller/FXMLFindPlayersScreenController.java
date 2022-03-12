@@ -195,7 +195,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                                 Boolean check=isrecoredGame.alert("Do you want to record game ?");
                                 if(check)
                                 {
-                                    ReadWriteHelper.createFile("online-mode");
+                                    ReadWriteHelper.createFile("online-mode", userName, opponentUsername);
                                     ReadWriteHelper.writeFile(userName + ".");
                                     ReadWriteHelper.writeFile(opponentUsername + ".");
                                     ReadWriteHelper.writeFile("fristPlayer"+".");
@@ -276,7 +276,7 @@ public class FXMLFindPlayersScreenController implements Initializable {
                     Boolean check=isrecoredGame.alert("Do you want to record game ?");
                     if(check)
                     {
-                        ReadWriteHelper.createFile("online-mode");
+                        ReadWriteHelper.createFile("online-mode", userName, opponentUsername);
                         ReadWriteHelper.writeFile(userName + ".");
                         ReadWriteHelper.writeFile(opponentUsername + ".");
                         ReadWriteHelper.writeFile("fristPlayer"+".");

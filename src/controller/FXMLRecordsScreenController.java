@@ -56,6 +56,7 @@ public class FXMLRecordsScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        recordsListView.getStylesheets().add("CSS/cssStyling.css");
         recordsListView.applyCss();
         System.out.println(listType);  
         
@@ -93,6 +94,7 @@ public class FXMLRecordsScreenController implements Initializable {
 
         for (int i = 0; i < listOfFiles.length; i++) {
          if (listOfFiles[i].isFile()) {
+             
              fileNames.add(listOfFiles[i].getName());
              System.out.println(listOfFiles[i].getName());
             } 
