@@ -39,12 +39,12 @@ public class ReadWriteHelper {
 
         if(listType.equals("local-mode")){
             prefs.put(c.getCurrentDateTime(), c.getCurrentDateTime()); 
-              File dir = new File("C:/savedLocalGame");//savedLocalGame
+              File dir = new File("C:/XOrecords/savedLocalGame");//savedLocalGame
               dir.mkdirs();
               file = new File(dir,prefs.get(c.getCurrentDateTime(),""));
               
         }else if(listType.equals("online-mode")){
-            File dir = new File("C:/savedOnlineGame");
+            File dir = new File("C:/XOrecords/savedOnlineGame");
             dir.mkdirs();
             prefs.put(c.getCurrentDateTime(), c.getCurrentDateTime());
             file = new File(dir,prefs.get(c.getCurrentDateTime(),""));

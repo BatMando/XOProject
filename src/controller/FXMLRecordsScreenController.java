@@ -70,9 +70,9 @@ public class FXMLRecordsScreenController implements Initializable {
               dir = "savedOnlineGame";
         }
         
-        File folder = new File("C:/"+dir);
+        File folder = new File("C:/XOrecords/"+dir);
         File[] listOfFiles = folder.listFiles();
-        System.out.println("C:/"+dir);
+        System.out.println("C:/XOrecords/"+dir);
         if(folder.exists() && listOfFiles.length != 0){
             return true;
         }
@@ -86,8 +86,8 @@ public class FXMLRecordsScreenController implements Initializable {
               dir = "savedOnlineGame";
         }
         
-        File folder = new File("C:/"+dir);
-        System.out.println("C:/"+dir);
+        File folder = new File("C:/XOrecords/"+dir);
+        System.out.println("C:/XOrecords/"+dir);
         
         File[] listOfFiles = folder.listFiles();
 
