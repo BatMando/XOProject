@@ -151,13 +151,13 @@ public class FXMLWatchGameScreenController implements Initializable {
      private void displayGame(){
         
         if(listType.equals("local-mode")){
-            File dir = new File("record/savedLocalGame");
+            File dir = new File("C:/savedLocalGame");
             if(dir.exists()){
                 dir.mkdirs();
                 datareaded=ReadWriteHelper.readFileAsString(dir+"/"+FXMLRecordsScreenController.recordedGameFileName);
             }
         }else if (listType.equals("online-mode")){
-            File dir = new File("record/savedOnlineGame");
+            File dir = new File("C:/savedOnlineGame");
             if(dir.exists()){
                 dir.mkdirs();
                 datareaded=ReadWriteHelper.readFileAsString(dir+"/"+FXMLRecordsScreenController.recordedGameFileName);
