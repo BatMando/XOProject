@@ -68,7 +68,7 @@ public class FXMLChooseLevelController implements Initializable {
                  Boolean check=isrecoredGame.alert("Do you want to record game ?");
                      if(check)
                        {
-                        ReadWriteHelper.createFile("local-mode");
+                        ReadWriteHelper.createFile("local-mode", prefs.get("username",""), "Computer");
                         ReadWriteHelper.writeFile(prefs.get("username","")+".");
                         ReadWriteHelper.writeFile("user"+".");
                         isrecord=true;
@@ -84,7 +84,7 @@ public class FXMLChooseLevelController implements Initializable {
                   Boolean check=isrecoredGame.alert("Do you want to record game ?");
                   if(check)
                   {
-                   ReadWriteHelper.createFile("local-mode");
+                   ReadWriteHelper.createFile("local-mode", prefs.get("username", ""), "Computer");
                    ReadWriteHelper.writeFile(prefs.get("username", "")+".");
                    ReadWriteHelper.writeFile("user"+".");
                      isrecord=true;
@@ -118,7 +118,7 @@ public class FXMLChooseLevelController implements Initializable {
                  Boolean check=isrecoredGame.alert("Do you want to record game ?");
                      if(check)
                        {
-                        ReadWriteHelper.createFile("local-mode");
+                        ReadWriteHelper.createFile("local-mode", prefs.get("username",""), "Computer");
                         ReadWriteHelper.writeFile(prefs.get("username","")+".");
                         ReadWriteHelper.writeFile("user"+".");
                         isrecord=true;
@@ -134,7 +134,7 @@ public class FXMLChooseLevelController implements Initializable {
                   Boolean check=isrecoredGame.alert("Do you want to record game ?");
                   if(check)
                   {
-                   ReadWriteHelper.createFile("local-mode");
+                   ReadWriteHelper.createFile("local-mode", prefs.get("username",""), "Computer");
                    ReadWriteHelper.writeFile(prefs.get("username", "")+".");
                    ReadWriteHelper.writeFile("user"+".");
                      isrecord=true;

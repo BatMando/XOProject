@@ -20,7 +20,7 @@ public class ReadWriteHelper {
     
     
    private static File file;
-   static String filePath = new File("").getAbsolutePath();
+   static String filePath = new File("C:/").getAbsolutePath();
    
 
     
@@ -29,7 +29,7 @@ public class ReadWriteHelper {
     
    
    
-   public  static void createFile(String listType) {
+   public  static void createFile(String listType, String player1, String player2) {
 
         Preferences prefs=Preferences.userNodeForPackage(ReadWriteHelper.class);
         
@@ -39,15 +39,15 @@ public class ReadWriteHelper {
 
         if(listType.equals("local-mode")){
             prefs.put(c.getCurrentDateTime(), c.getCurrentDateTime()); 
-              File dir = new File("record/savedLocalGame");
+              File dir = new File("C:/XOrecords/savedLocalGame");//savedLocalGame
               dir.mkdirs();
-              file = new File(dir,prefs.get(c.getCurrentDateTime(),""));
+              file = new File(dir, player1 + " Vs " + player2 + "   " + prefs.get(c.getCurrentDateTime(),""));
               
         }else if(listType.equals("online-mode")){
-            File dir = new File("record/savedOnlineGame");
+            File dir = new File("C:/XOrecords/savedOnlineGame");
             dir.mkdirs();
             prefs.put(c.getCurrentDateTime(), c.getCurrentDateTime());
-            file = new File(dir,prefs.get(c.getCurrentDateTime(),""));
+            file = new File(dir, player1 + " Vs " + player2 + "   " + prefs.get(c.getCurrentDateTime(),""));
             
         }  
            try {
@@ -81,7 +81,6 @@ public class ReadWriteHelper {
         }
               
     }
-    
     public static String readFileAsString(String fileName) 
     {  String data = "";
        try {

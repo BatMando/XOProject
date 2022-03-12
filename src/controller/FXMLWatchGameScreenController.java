@@ -62,6 +62,8 @@ public class FXMLWatchGameScreenController implements Initializable {
     private String greenColor = "#AFE0AF";
     private String yellowColor = "#ffe591";
    static String filePath = new File("").getAbsolutePath();
+   public String player1;
+   public String player2;
    
     /**
      * Initializes the controller class.
@@ -90,12 +92,12 @@ public class FXMLWatchGameScreenController implements Initializable {
 		int index;
                 String []data=new String[9];
                 index=dataStored.indexOf(".");
-                String player1 = dataStored.substring(0,index );
+                player1 = dataStored.substring(0,index );
                 System.out.println("player1 " +player1);
                 dataStored=dataStored.substring(index+1,dataStored.length());
                 System.out.println("dataStored " +dataStored);
                 index=dataStored.indexOf(".");
-                String player2 = dataStored.substring(0, index);
+                player2 = dataStored.substring(0, index);
                 System.out.println("player2 " +player2);
                 dataStored=dataStored.substring(index+1,dataStored.length());
                 System.out.println("dataStored2 " +dataStored);
@@ -151,13 +153,13 @@ public class FXMLWatchGameScreenController implements Initializable {
      private void displayGame(){
         
         if(listType.equals("local-mode")){
-            File dir = new File("record/savedLocalGame");
+            File dir = new File("C:/XOrecords/savedLocalGame");
             if(dir.exists()){
                 dir.mkdirs();
                 datareaded=ReadWriteHelper.readFileAsString(dir+"/"+FXMLRecordsScreenController.recordedGameFileName);
             }
         }else if (listType.equals("online-mode")){
-            File dir = new File("record/savedOnlineGame");
+            File dir = new File("C:/XOrecords/savedOnlineGame");
             if(dir.exists()){
                 dir.mkdirs();
                 datareaded=ReadWriteHelper.readFileAsString(dir+"/"+FXMLRecordsScreenController.recordedGameFileName);
@@ -177,6 +179,8 @@ public class FXMLWatchGameScreenController implements Initializable {
                            
                              position=arrOfData[a].substring(3,4);
                              characterToBePlayed=arrOfData[a].substring(4,5);
+                               System.out.println(position);
+                               System.out.println(characterToBePlayed);
                              Platform.runLater(new Runnable() {
                              @Override
                              public void run() {

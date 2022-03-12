@@ -18,7 +18,7 @@
             <Image url="@../resources/login.png" />
          </image>
       </ImageView>
-      <StackPane layoutX="254.4499969482422" layoutY="97.44999694824219">
+      <StackPane layoutX="212.0" layoutY="81.0" prefHeight="343.0" prefWidth="423.0">
          <children>
             <ImageView fitHeight="318.0" fitWidth="335.0" opacity="0.0" pickOnBounds="true">
                <image>
@@ -28,9 +28,9 @@
                   <GaussianBlur radius="1.55" />
                </effect>
             </ImageView>
-            <ScrollPane fx:id="recordScroll" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;;">
+            <ScrollPane fx:id="recordScroll" prefHeight="313.0" prefWidth="324.0" style="-fx-background-color: transparent;;">
                <content>
-                  <ListView fx:id="recordsListView" editable="true" onMouseClicked="#selectedItem" prefHeight="318.0" prefWidth="335.0" style="-fx-background-color: transparent;" />
+                  <ListView fx:id="recordsListView" editable="true" onMouseClicked="#selectedItem" prefHeight="338.0" prefWidth="419.0" style="-fx-background-color: transparent;" />
                </content>
             </ScrollPane>
          </children>

@@ -56,6 +56,7 @@ public class FXMLRecordsScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        recordsListView.getStylesheets().add("CSS/cssStyling.css");
         recordsListView.applyCss();
         System.out.println(listType);  
         
@@ -70,9 +71,9 @@ public class FXMLRecordsScreenController implements Initializable {
               dir = "savedOnlineGame";
         }
         
-        File folder = new File("record/"+dir);
+        File folder = new File("C:/XOrecords/"+dir);
         File[] listOfFiles = folder.listFiles();
-        System.out.println("record/"+dir);
+        System.out.println("C:/XOrecords/"+dir);
         if(folder.exists() && listOfFiles.length != 0){
             return true;
         }
@@ -86,13 +87,14 @@ public class FXMLRecordsScreenController implements Initializable {
               dir = "savedOnlineGame";
         }
         
-        File folder = new File("record/"+dir);
-        System.out.println("record/"+dir);
+        File folder = new File("C:/XOrecords/"+dir);
+        System.out.println("C:/XOrecords/"+dir);
         
         File[] listOfFiles = folder.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {
          if (listOfFiles[i].isFile()) {
+             
              fileNames.add(listOfFiles[i].getName());
              System.out.println(listOfFiles[i].getName());
             } 
