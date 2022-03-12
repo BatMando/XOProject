@@ -9,7 +9,7 @@
  <p>&emsp;• Select who you want to play with from online players list.</p>
  
 # Screenshots
-<br><br>
+<br>
 <img width="845" alt="game1" src="https://user-images.githubusercontent.com/46964294/158030578-121a2abb-6b2e-4cf7-91e3-449ee8884779.png">
 <img width="847" alt="game2" src="https://user-images.githubusercontent.com/46964294/158030584-04bddecd-cbbb-4307-b231-0e2c3f331909.png">
 <img width="845" alt="game3" src="https://user-images.githubusercontent.com/46964294/158030593-8f42f35d-b2d7-45f4-92b2-d51c9c5bcfae.png">
