@@ -519,7 +519,7 @@ public class FXMLGamingOnlineController implements Initializable {
     public void gotoHomeHell() throws IOException {
         
         System.out.println("back to Hell");
-        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLHomeScreen.fxml"));
+        Parent menu_parent = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
         Scene SceneMenu = new Scene(menu_parent);
         Stage stage = (Stage)backBtn.getParent().getScene().getWindow();
         stage.setScene(SceneMenu);
